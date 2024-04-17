@@ -1,7 +1,7 @@
 import "./App.css";
 import "@mantine/core/styles.css";
 import Header from "./components/Header/Header";
-import { AppShell, Burger, Flex } from "@mantine/core";
+import { AppShell } from "@mantine/core";
 import { Outlet } from "react-router-dom";
 import { MantineProvider } from "@mantine/core";
 
