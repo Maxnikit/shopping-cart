@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Flex } from "@mantine/core";
 import ProductCard from "../ProductCard/ProductCard";
+
 const MainPage = () => {
   const {
     data: allProducts,
@@ -21,9 +22,8 @@ const MainPage = () => {
   if (error) {
     return <div className="error">Error: error fetching</div>;
   }
-  console.log(allProducts);
   return (
-    <Flex wrap={"wrap"} justify="center" align="center" gap="lg">
+    <Flex wrap="wrap" justify="center" align="center" gap="lg">
       {allProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}

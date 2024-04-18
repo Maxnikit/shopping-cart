@@ -1,10 +1,11 @@
-import App from "./App";
-import ErrorPage from "./components/ErrorPage/ErrorPage";
-import MainPage from "./components/MainPage/MainPage";
-import Cart from "./components/Cart/Cart";
+import App from './App';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+import MainPage from './components/MainPage/MainPage';
+import Cart from './components/Cart/Cart';
+
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
@@ -13,7 +14,7 @@ const routes = [
         element: <MainPage />,
       },
       {
-        path: "/cart",
+        path: '/cart',
         element: <Cart />,
       },
     ],
