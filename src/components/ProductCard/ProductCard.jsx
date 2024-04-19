@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const ProductCard = ({
   product: {
     id,
-    name,
+    title: name,
     price,
     image,
     rating = {
@@ -12,37 +12,39 @@ const ProductCard = ({
       count: 0,
     },
   },
-}) => (
-  <Card
-    data-testid="product"
-    shadow="sm"
-    padding="lg"
-    radius="md"
-    withBorder
-    key={id}
-    style={{ width: 300 }}
-  >
-    <Flex direction="column">
-      <Card.Section>
-        <Image src={image} height={200} alt={name} fit="contain" />
-      </Card.Section>
-      <Text size="lg" fw={500}>
-        {price}$
-      </Text>
-      <Text fw={400} lineClamp={1} data-testid="productName">
-        {name}
-      </Text>
-      <Group>
-        <Rating defaultValue={rating.rate} readOnly />
-        <Text>{rating.count} reviews</Text>
-      </Group>
-      <Button color="blue" fullWidth mt="md" radius="md">
-        {/* TODO add icon of cart */}
-        <Text>Add to Cart</Text>
-      </Button>
-    </Flex>
-  </Card>
-);
+}) => {
+  return (
+    <Card
+      data-testid="product"
+      shadow="sm"
+      padding="lg"
+      radius="md"
+      withBorder
+      key={id}
+      style={{ width: 300 }}
+    >
+      <Flex direction="column">
+        <Card.Section>
+          <Image src={image} height={200} alt={name} fit="contain" />
+        </Card.Section>
+        <Text size="lg" fw={500}>
+          {price}$
+        </Text>
+        <Text fw={400} lineClamp={1} data-testid="productName">
+          {name}
+        </Text>
+        <Group>
+          <Rating defaultValue={rating.rate} readOnly />
+          <Text>{rating.count} reviews</Text>
+        </Group>
+        <Button color="blue" fullWidth mt="md" radius="md">
+          {/* TODO add icon of cart */}
+          <Text>Add to Cart</Text>
+        </Button>
+      </Flex>
+    </Card>
+  );
+};
 
 ProductCard.propTypes = {
   product: PropTypes.shape({
