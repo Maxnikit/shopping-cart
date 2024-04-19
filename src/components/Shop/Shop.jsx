@@ -1,9 +1,17 @@
 import { Flex } from "@mantine/core";
-import useShopProducts from "../../queryService";
+import { useQuery } from "@tanstack/react-query";
+import { getProducts } from "../../getProducts";
 import ProductCard from "../ProductCard/ProductCard";
 
 const Shop = () => {
-  const { allProducts, isLoading, error } = useShopProducts();
+  const {
+    data: allProducts,
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["allProducts"],
+    queryFn: getProducts,
+  });
 
   if (isLoading) {
     return <h2>Loading...</h2>;
