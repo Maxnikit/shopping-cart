@@ -14,6 +14,7 @@ const ProductCard = ({
   },
 }) => (
   <Card
+    data-testid="product"
     shadow="sm"
     padding="lg"
     radius="md"

@@ -14,6 +14,21 @@ function App() {
         <Outlet />
       </AppShell.Main>
     </AppShell>
+    // Following code was found somewhere in internet, maybe thats a better way
+    // to do routing. I don't know
+    // <div>
+    //   <Link to="/">Home</Link>
+
+    //   <Link to="/about">About</Link>
+
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+
+    //     <Route path="/about" element={<About />} />
+
+    //     <Route path="*" element={<NoMatch />} />
+    //   </Routes>
+    // </div>
   );
 }
 
