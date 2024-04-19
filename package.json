@@ -10,7 +10,8 @@
     "lint:eslint": "eslint . --ext .js,.jsx --cache",
     "lint:stylelint": "stylelint **/*.css --cache",
     "lint:fix": "eslint --fix --ext .js,.jsx .",
-    "test": "vitest",
+    "vitest": "vitest",
+    "test": "npm run lint:eslint && npm run vitest && npm run lint:stylelint",
     "preview": "vite preview"
   },
   "dependencies": {

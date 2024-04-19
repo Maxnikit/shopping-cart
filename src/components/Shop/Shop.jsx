@@ -21,7 +21,8 @@ const Shop = () => {
   if (error) {
     return <div className="error">Error: error fetching</div>;
   }
-  console.log(allProducts);
+  // console.log for getting 20 products
+  // console.log(allProducts);
   return (
     <Flex
       data-testid="shop"

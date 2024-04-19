@@ -11,8 +11,6 @@ describe("Shop", () => {
   });
 
   it("loads and displays product", async () => {
-    let productElements = [];
-
     render(<Shop />);
 
     // Test loading state

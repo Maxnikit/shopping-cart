@@ -1,4 +1,3 @@
-import "./App.css";
 import "@mantine/core/styles.css";
 import { AppShell } from "@mantine/core";
 import { Outlet } from "react-router-dom";

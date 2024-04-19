@@ -1,15 +1,10 @@
 import { Button, Flex, Title, Text } from "@mantine/core";
 
 import { Link } from "react-router-dom";
-import styles from "./Header.module.css";
 
 const Header = () => (
   <>
-    <div
-      data-testid="appHeader"
-      className={styles.header}
-      style={{ width: "100vw" }}
-    >
+    <div data-testid="appHeader" className="header" style={{ width: "100vw" }}>
       <Flex
         justify="space-between"
         align="center"
