@@ -1,6 +1,7 @@
 import { Card, Image, Text, Button, Group, Flex, Rating } from "@mantine/core";
 import PropTypes from "prop-types";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import style from "./ProductCard.module.css";
 
 const ProductCard = ({
   product: {
@@ -29,13 +30,19 @@ const ProductCard = ({
       style={{ width: 300 }}
     >
       <Flex direction="column">
-        <Card.Section onClick={() => goToProductPage(id)}>
+        <Card.Section>
           <Image src={image} height={200} alt={name} fit="contain" />
         </Card.Section>
         <Text size="lg" fw={500}>
           {price}$
         </Text>
-        <Text fw={400} lineClamp={1} data-testid="productName">
+        <Text
+          fw={400}
+          lineClamp={1}
+          data-testid="productName"
+          className={style.productName}
+          onClick={() => goToProductPage(id)}
+        >
           {name}
         </Text>
         <Group>
