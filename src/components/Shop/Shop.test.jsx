@@ -17,16 +17,14 @@ describe("Shop", () => {
     expect(screen.getByText(/loading/i)).toBeInTheDocument();
 
     // Test success state
-    await waitFor(() =>
-      expect(screen.getByTestId("product")).toBeInTheDocument()
-    );
+    await screen.findByTestId("product");
+    expect(screen.getByText("Test product")).toBeInTheDocument();
   });
 
   it("renders product with all properties", async () => {
     render(<Shop />);
 
-    await waitFor(() =>
-      expect(screen.getByTestId("productName")).toBeInTheDocument()
-    );
+    await screen.findByText("Test product");
+    expect(screen.getByText("Test product")).toBeInTheDocument();
   });
 });
