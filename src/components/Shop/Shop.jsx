@@ -1,7 +1,7 @@
 import { Flex } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
-import { getProducts } from "../../getProducts";
 import ProductCard from "../ProductCard/ProductCard";
+import { getAllProducts } from "../../api/getProducts";
 
 const Shop = () => {
   const {
@@ -10,7 +10,7 @@ const Shop = () => {
     error,
   } = useQuery({
     queryKey: ["allProducts"],
-    queryFn: getProducts,
+    queryFn: () => getAllProducts(),
   });
 
   if (isLoading) {

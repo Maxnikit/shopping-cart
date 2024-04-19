@@ -1,5 +1,6 @@
 import { Card, Image, Text, Button, Group, Flex, Rating } from "@mantine/core";
 import PropTypes from "prop-types";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const ProductCard = ({
   product: {
@@ -13,6 +14,10 @@ const ProductCard = ({
     },
   },
 }) => {
+  const navigate = useNavigate();
+  const goToProductPage = (productId) => {
+    navigate(`/product/${productId}`);
+  };
   return (
     <Card
       data-testid="product"
@@ -24,7 +29,7 @@ const ProductCard = ({
       style={{ width: 300 }}
     >
       <Flex direction="column">
-        <Card.Section>
+        <Card.Section onClick={() => goToProductPage(id)}>
           <Image src={image} height={200} alt={name} fit="contain" />
         </Card.Section>
         <Text size="lg" fw={500}>
