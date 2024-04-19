@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-
 import {
   Image,
   Text,
@@ -35,37 +34,44 @@ const ProductPage = () => {
   return <ProductPageComponent product={product} />;
 };
 
-const ProductPageComponent = ({ product }) => {
+const ProductPageComponent = ({
+  product: {
+    id,
+    title: name,
+    description,
+    category,
+    price,
+    image,
+    rating = {
+      rate: 0,
+      count: 0,
+    },
+  },
+}) => {
   return (
     <>
       <Group
+        data-testid={`productPage-${id}`}
         p="md"
         justify="center"
         align="start"
         radius="lg"
-        withBorder
         shadow="sm"
         gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
         // gap={5}
       >
-        <Image
-          maw={500}
-          mah={500}
-          fit="contain"
-          src={product.image}
-          alt={product.title}
-        />
+        <Image maw={500} mah={500} fit="contain" src={image} alt={name} />
 
         <Stack w={500}>
-          <Title order={2}>{product.title}</Title>
-          <Badge>{product.category}</Badge>
+          <Title order={2}>{name}</Title>
+          <Badge>{category}</Badge>
           <Group>
-            <Rating defaultValue={product.rating.rate} readOnly />
-            <Text>{product.rating.count} reviews</Text>
+            <Rating defaultValue={rating.rate} readOnly />
+            <Text>{rating.count} reviews</Text>
           </Group>
-          <Text>{product.description}</Text>
+          <Text>{description}</Text>
           <Group align="center">
-            <Text>{product.price}$</Text>
+            <Text>{price}$</Text>
             <Button radius="md">
               <Text>Add to Cart</Text>
             </Button>

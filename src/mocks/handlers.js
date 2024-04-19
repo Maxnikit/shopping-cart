@@ -10,4 +10,14 @@ export const handlers = [
       },
     ]);
   }),
+  http.get("https://fakestoreapi.com/products/1", () => {
+    return HttpResponse.json({
+      id: "1",
+      name: "Test product",
+      rating: {
+        count: 5,
+        rate: 4.5,
+      },
+    });
+  }),
 ];
