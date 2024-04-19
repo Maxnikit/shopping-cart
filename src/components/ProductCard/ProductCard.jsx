@@ -30,7 +30,10 @@ const ProductCard = ({
       style={{ width: 300 }}
     >
       <Flex direction="column">
-        <Card.Section>
+        <Card.Section
+          className={style.productImage}
+          onClick={() => goToProductPage(id)}
+        >
           <Image src={image} height={200} alt={name} fit="contain" />
         </Card.Section>
         <Text size="lg" fw={500}>

@@ -2,3 +2,7 @@
   color: var(--mantine-primary-color-filled);
   cursor: pointer;
 }
+
+.productImage:hover {
+  cursor: pointer;
+}

@@ -1,19 +1,17 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getProductById } from "../../api/getProducts";
+
 import {
-  Card,
   Image,
   Text,
   Button,
   Group,
-  Flex,
   Rating,
-  Grid,
   Title,
   Stack,
   Badge,
 } from "@mantine/core";
+import { getProductById } from "../../api/getProducts";
 
 const ProductPage = () => {
   const { id } = useParams();
