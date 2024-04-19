@@ -12,7 +12,12 @@ const Header = () => (
       >
         <Title flex={1} order={1}>
           Totally not a{" "}
-          <Text component="span" c="blue" inherit>
+          <Text
+            component="span"
+            // style={{ color: `var(--mantine-primary-color-filled)` }}
+            inherit
+            c="var(--mantine-primary-color-filled)"
+          >
             fake
           </Text>{" "}
           store

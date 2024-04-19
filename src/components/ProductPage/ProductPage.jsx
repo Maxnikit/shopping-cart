@@ -1,6 +1,19 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getProductById } from "../../api/getProducts";
+import {
+  Card,
+  Image,
+  Text,
+  Button,
+  Group,
+  Flex,
+  Rating,
+  Grid,
+  Title,
+  Stack,
+  Badge,
+} from "@mantine/core";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -26,12 +39,42 @@ const ProductPage = () => {
 
 const ProductPageComponent = ({ product }) => {
   return (
-    <div>
-      <h1>{product.title}</h1>
-      <p>{product.description}</p>
-      <p>{product.price}</p>
-      <img src={product.image} alt={product.title} />
-    </div>
+    <>
+      <Group
+        p="md"
+        justify="center"
+        align="start"
+        radius="lg"
+        withBorder
+        shadow="sm"
+        gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
+        // gap={5}
+      >
+        <Image
+          maw={500}
+          mah={500}
+          fit="contain"
+          src={product.image}
+          alt={product.title}
+        />
+
+        <Stack w={500}>
+          <Title order={2}>{product.title}</Title>
+          <Badge>{product.category}</Badge>
+          <Group>
+            <Rating defaultValue={product.rating.rate} readOnly />
+            <Text>{product.rating.count} reviews</Text>
+          </Group>
+          <Text>{product.description}</Text>
+          <Group align="center">
+            <Text>{product.price}$</Text>
+            <Button radius="md">
+              <Text>Add to Cart</Text>
+            </Button>
+          </Group>
+        </Stack>
+      </Group>
+    </>
   );
 };
 

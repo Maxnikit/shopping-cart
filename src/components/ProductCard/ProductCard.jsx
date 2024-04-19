@@ -49,7 +49,7 @@ const ProductCard = ({
           <Rating defaultValue={rating.rate} readOnly />
           <Text>{rating.count} reviews</Text>
         </Group>
-        <Button color="blue" fullWidth mt="md" radius="md">
+        <Button fullWidth mt="md" radius="md">
           {/* TODO add icon of cart */}
           <Text>Add to Cart</Text>
         </Button>
