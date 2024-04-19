@@ -9,5 +9,5 @@ export const theme = createTheme({
     xl: "90em",
   },
 
-  primaryColor: "cyan",
+  primaryColor: "grape",
 });

@@ -1,4 +1,4 @@
 .productName:hover {
-  color: #4dabf7;
+  color: var(--mantine-primary-color-filled);
   cursor: pointer;
 }
