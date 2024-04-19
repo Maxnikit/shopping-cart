@@ -17,6 +17,7 @@ module.exports = {
   settings: { react: { version: "18.2" } },
   plugins: ["react-refresh"],
   rules: {
+    "arrow-body-style": "off",
     "@typescript-eslint/quotes": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",

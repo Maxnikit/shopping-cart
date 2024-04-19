@@ -29,7 +29,7 @@ const ProductCard = ({
       <Text size="lg" fw={500}>
         {price}$
       </Text>
-      <Text fw={400} lineClamp={1}>
+      <Text fw={400} lineClamp={1} data-testid="productName">
         {name}
       </Text>
       <Group>

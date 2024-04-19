@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom/vitest";
-import { afterEach, vi } from "vitest";
+import { afterEach, afterAll, beforeAll, vi } from "vitest";
 import { cleanup } from "@testing-library/react";
+import { server } from "./src/mocks/node";
 
 const { getComputedStyle } = window;
 window.getComputedStyle = (elt) => getComputedStyle(elt);
@@ -27,6 +28,11 @@ class ResizeObserver {
 }
 
 window.ResizeObserver = ResizeObserver;
+
 afterEach(() => {
   cleanup();
 });
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());

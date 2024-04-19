@@ -37,6 +37,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "jsdom": "^24.0.0",
+    "msw": "^2.2.14",
     "postcss": "^8.4.38",
     "postcss-preset-mantine": "^1.14.4",
     "postcss-simple-vars": "^7.0.1",
