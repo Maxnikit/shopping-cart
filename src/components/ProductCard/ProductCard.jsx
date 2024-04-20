@@ -2,22 +2,47 @@ import { Card, Image, Text, Button, Group, Flex, Rating } from "@mantine/core";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import style from "./ProductCard.module.css";
+// import useShoppingCart from "../../hooks/useShoppingCart";
+import { useCart } from "../../hooks/cartContext";
 
-const ProductCard = ({
-  product: {
-    id,
-    title: name,
-    price,
-    image,
-    rating = {
-      rate: 0,
-      count: 0,
-    },
-  },
-}) => {
+// TODO add addToCart functionality
+const ProductCard = ({ product }) => {
+  const { id, title, price, image, rating = { rate: 0, count: 0 } } = product;
+
   const navigate = useNavigate();
   const goToProductPage = (productId) => {
     navigate(`/product/${productId}`);
+  };
+  const goToCart = () => {
+    navigate(`/cart`);
+  };
+  const { cartItems, addToCart } = useCart();
+  const isProductInCart = cartItems.some((item) => item.id === product.id);
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+  const buyButton = () => {
+    if (isProductInCart) {
+      return (
+        <Group>
+          <Button
+            radius="md"
+            onClick={() => {
+              goToCart();
+            }}
+            color="red"
+            fullWidth
+          >
+            <Text>In cart</Text>
+          </Button>
+        </Group>
+      );
+    }
+    return (
+      <Button radius="md" onClick={() => handleAddToCart()}>
+        <Text>Add to Cart</Text>
+      </Button>
+    );
   };
   return (
     <Card
@@ -34,7 +59,7 @@ const ProductCard = ({
           className={style.productImage}
           onClick={() => goToProductPage(id)}
         >
-          <Image src={image} height={200} alt={name} fit="contain" />
+          <Image src={image} height={200} alt={title} fit="contain" />
         </Card.Section>
         <Text size="lg" fw={500}>
           {price}$
@@ -46,16 +71,13 @@ const ProductCard = ({
           className={style.productName}
           onClick={() => goToProductPage(id)}
         >
-          {name}
+          {title}
         </Text>
         <Group>
           <Rating defaultValue={rating.rate} readOnly />
           <Text>{rating.count} reviews</Text>
         </Group>
-        <Button fullWidth mt="md" radius="md">
-          {/* TODO add icon of cart */}
-          <Text>Add to Cart</Text>
-        </Button>
+        {buyButton()}
       </Flex>
     </Card>
   );
@@ -64,7 +86,7 @@ const ProductCard = ({
 ProductCard.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number,
-    name: PropTypes.string,
+    title: PropTypes.string,
     price: PropTypes.number,
     description: PropTypes.string,
     category: PropTypes.string,

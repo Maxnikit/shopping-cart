@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MantineProvider } from "@mantine/core";
 import routes from "./routes";
 import { theme } from "./theme";
+import { CartProvider } from "./hooks/cartContext";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter(routes);
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <MantineProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
       </QueryClientProvider>
     </MantineProvider>
   </React.StrictMode>

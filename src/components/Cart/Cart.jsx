@@ -1,5 +1,5 @@
 import { List } from "@mantine/core";
-import useShoppingCart from "../../hooks/userShoppingCart";
+import useShoppingCart from "../../hooks/useShoppingCart";
 
 const Cart = () => {
   const { cartItems } = useShoppingCart();
@@ -8,7 +8,7 @@ const Cart = () => {
     return (
       <List>
         {cartItems.map((item) => (
-          <List.Item>
+          <List.Item key={item.id}>
             {item.title} - {item.count}
           </List.Item>
         ))}

@@ -10,7 +10,7 @@ import {
   Stack,
   Badge,
 } from "@mantine/core";
-import useShoppingCart from "../../hooks/userShoppingCart";
+// import useShoppingCart from "../../hooks/useShoppingCart";
 import { getProductById } from "../../api/getProducts";
 
 const ProductPage = () => {

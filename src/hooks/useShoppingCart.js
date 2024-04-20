@@ -1,6 +1,7 @@
 // src/hooks/useShoppingCart.js
 import React from "react";
-
+// BUG item adds to cart only on rerender
+// BUG: If i try to add 2 items at the same time, it doesn't work
 // Helper functions to handle local storage
 const saveCart = (cartItems) => {
   localStorage.setItem("shoppingCart", JSON.stringify(cartItems));
@@ -19,14 +20,20 @@ export default function useShoppingCart() {
     // Save cart items to local storage whenever they change
     saveCart(cartItems);
   }, [cartItems]);
-
+  React.useEffect(() => {
+    saveCart(cartItems);
+  }, [cartItems]);
   const addToCart = (item) => {
+    console.log("initAdd", cartItems);
     setCartItems((prevItems) => {
       const itemIndex = prevItems.findIndex((i) => i.id === item.id);
       if (itemIndex > -1) {
         // Item already exists, so update the count
         const newItems = [...prevItems];
-        newItems[itemIndex].count += 1;
+        newItems[itemIndex] = {
+          ...newItems[itemIndex],
+          count: newItems[itemIndex].count + 1,
+        };
         return newItems;
       } else {
         // Item is new, so add it with a count of 1
@@ -34,6 +41,9 @@ export default function useShoppingCart() {
       }
     });
   };
+  React.useEffect(() => {
+    console.log("Cart items updated:", cartItems);
+  }, [cartItems]);
   const incrementItemCount = (itemId) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
