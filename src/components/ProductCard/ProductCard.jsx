@@ -17,6 +17,7 @@ const ProductCard = ({ product }) => {
     navigate(`/cart`);
   };
   const { cartItems, addToCart } = useCart();
+  console.log(cartItems);
   const isProductInCart = cartItems.some((item) => item.id === product.id);
   const handleAddToCart = () => {
     addToCart(product);

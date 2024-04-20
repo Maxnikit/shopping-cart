@@ -3,33 +3,74 @@ import React, { createContext, useContext, useReducer } from "react";
 // Define the shape of your context data
 const CartContext = createContext();
 
-const cartReducer = (state, action) => {
+const saveCart = (cartItems) => {
+  localStorage.setItem("shoppingCart", JSON.stringify(cartItems));
+};
+
+const loadCart = () => {
+  const cart = localStorage.getItem("shoppingCart");
+  return cart ? JSON.parse(cart) : [];
+};
+
+const cartReducer = (cartItems, action) => {
+  const { item } = action;
+  const itemIndex = cartItems.findIndex((i) => i.id === item.id);
   switch (action.type) {
     case "ADD_ITEM":
-      // Logic to add item
+      if (itemIndex > -1) {
+        // Item already exists, so update the count
+        const newItems = [...cartItems];
+        newItems[itemIndex] = {
+          ...newItems[itemIndex],
+          count: newItems[itemIndex].count + 1,
+        };
+        return newItems;
+      } else {
+        // Item is new, so add it with a count of 1
+        return [...cartItems, { ...item, count: 1 }];
+      }
       break;
     case "REMOVE_ITEM":
-      // Logic to remove item
+      // TODO Finish removeItem and other cases
+      // cartItems.filter((item) => item.id !== itemId);
       break;
-    // ... other actions
+    case "INCREMENT_ITEM_COUNT":
+      break;
+    case "DECREMENT_ITEM_COUNT":
+      break;
     default:
-      return state;
+      throw new Error(`Unknown action: ${action.type}`);
   }
+  return cartItems;
 };
 
 export const CartProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(cartReducer, { items: [] });
+  const [cartItems, dispatch] = useReducer(cartReducer, loadCart());
+
+  React.useEffect(() => {
+    console.log("CHANGE DETECTED");
+    // Save cart cartItems to local storage whenever they change
+    saveCart(cartItems);
+  }, [cartItems]);
+  React.useEffect(() => {
+    saveCart(cartItems);
+  }, [cartItems]);
 
   // You can also include actions here
   const contextValue = {
-    cartItems: state.items,
+    cartItems: cartItems,
     addToCart: (item) => {
       dispatch({ type: "ADD_ITEM", item });
     },
     removeFromCart: (itemId) => {
       dispatch({ type: "REMOVE_ITEM", itemId });
     },
-    // ... other actions
+    incrementItemCount: (itemId) => {
+      dispatch({ type: "INCREMENT_ITEM_COUNT", itemId });
+    },
+    decrementItemCount: (itemId) => {
+      dispatch({ type: "DECREMENT_ITEM_COUNT", itemId });
+    },
   };
 
   return (
