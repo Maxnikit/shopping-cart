@@ -51,7 +51,7 @@ const cartReducer = (cartItems, action) => {
     case "CLEAR_CART": {
       // FIX it broke website
       cartItems = [];
-      break;
+      return cartItems;
     }
     default:
       throw new Error(`Unknown action: ${action.type}`);
@@ -60,7 +60,7 @@ const cartReducer = (cartItems, action) => {
 };
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, dispatch] = useReducer(cartReducer, loadCart());
+  const [cartItems, dispatch] = useReducer(cartReducer, []);
 
   React.useEffect(() => {
     saveCart(cartItems);

@@ -6,7 +6,7 @@ const HeaderTitle = () => {
       <Title flex={1} order={1}>
         Totally not a{" "}
         <Text component="span" inherit c="var(--mantine-primary-color-filled)">
-          fake
+          fake{" "}
         </Text>
         store
       </Title>
