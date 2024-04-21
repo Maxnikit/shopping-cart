@@ -2,10 +2,8 @@ import { Card, Image, Text, Button, Group, Flex, Rating } from "@mantine/core";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import style from "./ProductCard.module.css";
-// import useShoppingCart from "../../hooks/useShoppingCart";
 import { useCart } from "../../hooks/cartContext";
 
-// TODO add addToCart functionality
 const ProductCard = ({ product }) => {
   const { id, title, price, image, rating = { rate: 0, count: 0 } } = product;
 

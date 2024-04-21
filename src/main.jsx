@@ -25,4 +25,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </MantineProvider>
   </React.StrictMode>
 );
-// TODO find out how to use VITEST with Mantine
