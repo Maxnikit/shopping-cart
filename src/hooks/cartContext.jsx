@@ -11,12 +11,13 @@ const loadCart = () => {
   const cart = localStorage.getItem("shoppingCart");
   return cart ? JSON.parse(cart) : [];
 };
-
+// TODO write tests
 const cartReducer = (cartItems, action) => {
-  const { item } = action;
-  const itemIndex = cartItems.findIndex((i) => i.id === item.id);
   switch (action.type) {
-    case "ADD_ITEM":
+    case "ADD_ITEM": {
+      const { item } = action;
+      const itemIndex = cartItems.findIndex((i) => i.id === item.id);
+
       if (itemIndex > -1) {
         // Item already exists, so update the count
         const newItems = [...cartItems];
@@ -29,19 +30,28 @@ const cartReducer = (cartItems, action) => {
         // Item is new, so add it with a count of 1
         return [...cartItems, { ...item, count: 1 }];
       }
-      break;
-    case "REMOVE_ITEM":
-      // TODO Finish removeItem and other cases
-      // cartItems.filter((item) => item.id !== itemId);
-      break;
-    case "INCREMENT_ITEM_COUNT":
-      break;
-    case "DECREMENT_ITEM_COUNT":
-      break;
+    }
+    case "REMOVE_ITEM": {
+      const { itemId } = action;
+      return cartItems.filter((item) => item.id !== itemId);
+    }
+    case "INCREMENT_ITEM_COUNT": {
+      const { itemId } = action;
+      return cartItems.map((item) =>
+        item.id === itemId ? { ...item, count: item.count + 1 } : item
+      );
+    }
+    case "DECREMENT_ITEM_COUNT": {
+      const { itemId } = action;
+      return cartItems.map((item) =>
+        item.id === itemId
+          ? { ...item, count: Math.max(item.count - 1, 0) }
+          : item
+      );
+    }
     default:
       throw new Error(`Unknown action: ${action.type}`);
   }
-  return cartItems;
 };
 
 export const CartProvider = ({ children }) => {
