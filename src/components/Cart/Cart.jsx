@@ -1,18 +1,21 @@
-import { List } from "@mantine/core";
-
+import { Button, List } from "@mantine/core";
 import { useCart } from "../../hooks/cartContext";
+
 const Cart = () => {
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart();
 
   const itemList = () => {
     return (
-      <List>
-        {cartItems.map((item) => (
-          <List.Item key={item.id}>
-            {item.title} - {item.count}
-          </List.Item>
-        ))}
-      </List>
+      <>
+        <Button onClick={clearCart}>Clear</Button>
+        <List>
+          {cartItems.map((item) => (
+            <List.Item key={item.id}>
+              {item.title} - {item.count}
+            </List.Item>
+          ))}
+        </List>
+      </>
     );
   };
   return <div>{itemList()}</div>;

@@ -10,7 +10,6 @@ import {
   Stack,
   Badge,
   Paper,
-  Card,
 } from "@mantine/core";
 import { useCart } from "../../hooks/cartContext";
 import { getProductById } from "../../api/getProducts";
@@ -47,7 +46,7 @@ const ProductPageComponent = ({ product }) => {
     cartItems,
     addToCart,
     removeFromCart,
-    clearCart,
+
     incrementItemCount,
     decrementItemCount,
   } = useCart();

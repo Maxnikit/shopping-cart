@@ -1,3 +1,4 @@
+import { Navigate } from "react-router-dom";
 import App from "./App";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Shop from "./components/Shop/Shop";
@@ -10,8 +11,11 @@ const routes = [
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
+      // TODO add homePage
+      // { index: true, element: <Home /> },
       {
         index: true,
+        path: "/shop",
         element: <Shop />,
       },
       {
@@ -23,6 +27,10 @@ const routes = [
         element: <ProductPage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <Navigate to="/shop" replace />,
   },
 ];
 

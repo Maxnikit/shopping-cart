@@ -1,33 +1,44 @@
 import "@mantine/core/styles.css";
-import { AppShell } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
-import Header from "./components/Header/Header";
+import { Group, AppShell, Burger } from "@mantine/core";
+import HeaderTitle from "./components/HeaderTitle/HeaderTitle";
+import NavButtons from "./components/NavButtons/NavButtons";
 
 function App() {
+  // TODO Make title smaller on mobile(or header bigger)
+  // TODO make it so burger closes when clicking links on mobile
+  // TODO fix layout shift by scrollbar
+  // TODO add navigation to home when pressing title
+  const [opened, { toggle }] = useDisclosure();
   return (
-    <AppShell header={{ height: 60 }} padding="md">
+    <AppShell
+      header={{ height: 60 }}
+      navbar={{
+        width: 300,
+        breakpoint: "sm",
+        collapsed: { desktop: true, mobile: !opened },
+      }}
+      padding="md"
+    >
       <AppShell.Header>
-        <Header />
+        <Group h="100%" px="md">
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Group justify="space-between" style={{ flex: 1 }}>
+            <HeaderTitle />
+            <Group ml="xl" gap={0} visibleFrom="sm">
+              <NavButtons />
+            </Group>
+          </Group>
+        </Group>
       </AppShell.Header>
+      <AppShell.Navbar py="md" px={4}>
+        <NavButtons />
+      </AppShell.Navbar>
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>
     </AppShell>
-    // Following code was found somewhere in internet, maybe thats a better way
-    // to do routing. I don't know
-    // <div>
-    //   <Link to="/">Home</Link>
-
-    //   <Link to="/about">About</Link>
-
-    //   <Routes>
-    //     <Route path="/" element={<Home />} />
-
-    //     <Route path="/about" element={<About />} />
-
-    //     <Route path="*" element={<NoMatch />} />
-    //   </Routes>
-    // </div>
   );
 }
 

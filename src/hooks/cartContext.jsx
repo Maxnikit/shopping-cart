@@ -48,9 +48,15 @@ const cartReducer = (cartItems, action) => {
           : item
       );
     }
+    case "CLEAR_CART": {
+      // FIX it broke website
+      cartItems = [];
+      break;
+    }
     default:
       throw new Error(`Unknown action: ${action.type}`);
   }
+  return cartItems;
 };
 
 export const CartProvider = ({ children }) => {
@@ -73,6 +79,9 @@ export const CartProvider = ({ children }) => {
     },
     decrementItemCount: (itemId) => {
       dispatch({ type: "DECREMENT_ITEM_COUNT", itemId });
+    },
+    clearCart: () => {
+      dispatch({ type: "CLEAR_CART" });
     },
   };
 
