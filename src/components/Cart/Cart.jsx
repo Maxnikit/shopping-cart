@@ -1,8 +1,8 @@
 import { List } from "@mantine/core";
-import useShoppingCart from "../../hooks/useShoppingCart";
 
+import { useCart } from "../../hooks/cartContext";
 const Cart = () => {
-  const { cartItems } = useShoppingCart();
+  const { cartItems } = useCart();
 
   const itemList = () => {
     return (
