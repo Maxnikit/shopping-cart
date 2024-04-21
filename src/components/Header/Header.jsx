@@ -1,5 +1,4 @@
 import { Button, Flex, Title, Text } from "@mantine/core";
-
 import { Link } from "react-router-dom";
 
 const Header = () => (
@@ -22,7 +21,6 @@ const Header = () => (
           </Text>{" "}
           store
         </Title>
-
         <Link to="/">
           <Button variant="subtle">Shop</Button>
         </Link>
