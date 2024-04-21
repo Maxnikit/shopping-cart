@@ -9,6 +9,7 @@ const Header = () => (
         align="center"
         style={{ padding: "10px 20px" }}
       >
+        {/* TODO add navigation to home when pressing title */}
         <Title flex={1} order={1}>
           Totally not a{" "}
           <Text
