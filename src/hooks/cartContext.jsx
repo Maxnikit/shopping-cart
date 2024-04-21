@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
-// TODO разобраться как настроить и пользоваться контекстом
-// Define the shape of your context data
+
 const CartContext = createContext();
 
 const saveCart = (cartItems) => {
@@ -58,17 +57,11 @@ export const CartProvider = ({ children }) => {
   const [cartItems, dispatch] = useReducer(cartReducer, loadCart());
 
   React.useEffect(() => {
-    console.log("CHANGE DETECTED");
-    // Save cart cartItems to local storage whenever they change
-    saveCart(cartItems);
-  }, [cartItems]);
-  React.useEffect(() => {
     saveCart(cartItems);
   }, [cartItems]);
 
-  // You can also include actions here
   const contextValue = {
-    cartItems: cartItems,
+    cartItems,
     addToCart: (item) => {
       dispatch({ type: "ADD_ITEM", item });
     },
