@@ -13,7 +13,7 @@ const loadCart = () => {
 };
 
 // Custom hook for shopping cart
-export default function useShoppingCart() {
+function useShoppingCart() {
   const [cartItems, setCartItems] = React.useState(loadCart());
 
   React.useEffect(() => {
