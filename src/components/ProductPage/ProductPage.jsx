@@ -9,6 +9,8 @@ import {
   Title,
   Stack,
   Badge,
+  Paper,
+  Card,
 } from "@mantine/core";
 import { useCart } from "../../hooks/cartContext";
 import { getProductById } from "../../api/getProducts";
@@ -55,19 +57,29 @@ const ProductPageComponent = ({ product }) => {
   const buyButton = () => {
     if (isProductInCart) {
       return (
-        <Group>
+        <Button.Group>
+          <Button color="red" onClick={() => handleDecrement()}>
+            -
+          </Button>
+
           <Button
             radius="md"
             onClick={() => {
               goToCart();
             }}
-            color="red"
           >
-            <Text>In cart</Text>
+            <Text size="lg">
+              {count}{" "}
+              <Text component="span" size="sm">
+                {" "}
+                in cart
+              </Text>
+            </Text>
           </Button>
-          <Button onClick={() => handleIncrement()}>+</Button>
-          <Button onClick={() => handleDecrement()}>-</Button>
-        </Group>
+          <Button color="green" onClick={() => handleIncrement()}>
+            +
+          </Button>
+        </Button.Group>
       );
     }
     return (
@@ -82,7 +94,6 @@ const ProductPageComponent = ({ product }) => {
 
   const handleDecrement = () => {
     if (count === 1) {
-      console.log("removing");
       removeFromCart(product.id);
     } else {
       decrementItemCount(product.id);
@@ -92,12 +103,9 @@ const ProductPageComponent = ({ product }) => {
     addToCart(product);
   };
   const count = cartItems.find((item) => item.id === product.id)?.count || 0;
-  console.log(cartItems);
-  const { id, name, price, description, category, image, rating } = product;
+  const { id, title, price, description, category, image, rating } = product;
   return (
-    <>
-      <Text>{count}</Text>
-      <Button onClick={clearCart}>Clear cart</Button>
+    <Paper shadow="sm" radius="md" p="md">
       <Group
         data-testid={`productPage-${id}`}
         p="md"
@@ -107,10 +115,10 @@ const ProductPageComponent = ({ product }) => {
         shadow="sm"
         gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
       >
-        <Image maw={500} mah={500} fit="contain" src={image} alt={name} />
+        <Image maw={500} mah={500} fit="contain" src={image} alt={title} />
 
         <Stack w={500}>
-          <Title order={2}>{name}</Title>
+          <Title order={2}>{title}</Title>
           <Badge>{category}</Badge>
           <Group>
             <Rating defaultValue={rating.rate} readOnly />
@@ -123,7 +131,7 @@ const ProductPageComponent = ({ product }) => {
           </Group>
         </Stack>
       </Group>
-    </>
+    </Paper>
   );
 };
 
