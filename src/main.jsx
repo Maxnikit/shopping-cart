@@ -12,7 +12,11 @@ const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <MantineProvider theme={theme}>
+    <MantineProvider
+      theme={theme}
+      defaultColorScheme="light"
+      forceColorScheme="light"
+    >
       <QueryClientProvider client={queryClient}>
         <CartProvider>
           <RouterProvider router={router} />
