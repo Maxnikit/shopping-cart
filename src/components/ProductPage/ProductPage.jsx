@@ -114,7 +114,7 @@ const ProductPageComponent = ({ product }) => {
         shadow="sm"
         gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
       >
-        <Image maw={500} mah={500} fit="contain" src={image} alt={title} />
+        <Image w={500} mah={500} fit="contain" src={image} alt={title} />
 
         <Stack w={500}>
           <Title order={2}>{title}</Title>
