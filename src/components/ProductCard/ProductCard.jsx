@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
             onClick={() => {
               goToCart();
             }}
-            color="red"
+            color="green"
             fullWidth
           >
             <Text>In cart</Text>
