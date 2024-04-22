@@ -56,11 +56,10 @@ const cartReducer = (cartItems, action) => {
     default:
       throw new Error(`Unknown action: ${action.type}`);
   }
-  return cartItems;
 };
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, dispatch] = useReducer(cartReducer, []);
+  const [cartItems, dispatch] = useReducer(cartReducer, loadCart());
 
   React.useEffect(() => {
     saveCart(cartItems);

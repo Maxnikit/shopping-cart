@@ -11,11 +11,8 @@ const routes = [
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      // TODO add homePage
-      // { index: true, element: <Home /> },
       {
         index: true,
-        path: "/shop",
         element: <Shop />,
       },
       {
@@ -30,7 +27,7 @@ const routes = [
   },
   {
     path: "*",
-    element: <Navigate to="/shop" replace />,
+    element: <Navigate to="/" replace />,
   },
 ];
 
