@@ -46,7 +46,6 @@ const ProductPageComponent = ({ product }) => {
     cartItems,
     addToCart,
     removeFromCart,
-
     incrementItemCount,
     decrementItemCount,
   } = useCart();

@@ -1,23 +1,42 @@
-import { Button, List } from "@mantine/core";
+import {
+  Button,
+  Flex,
+  Group,
+  Image,
+  List,
+  Paper,
+  Stack,
+  Text,
+  Title,
+  Divider,
+} from "@mantine/core";
 import { useCart } from "../../hooks/cartContext";
-
+import CartItem from "../CartItem/CartItem";
 const Cart = () => {
-  const { cartItems, clearCart } = useCart();
-
-  const itemList = () => {
+  const {
+    cartItems,
+    addToCart,
+    removeFromCart,
+    clearCart,
+    incrementItemCount,
+    decrementItemCount,
+  } = useCart();
+  console.log(cartItems);
+  const productList = () => {
     return (
-      <>
+      <Group>
         <Button onClick={clearCart}>Clear</Button>
-        <List>
-          {cartItems.map((item) => (
-            <List.Item key={item.id}>
-              {item.title} - {item.count}
-            </List.Item>
+        <Stack gap={20}>
+          {cartItems.map((product) => (
+            <CartItem product={product} key={product.id} />
           ))}
-        </List>
-      </>
+        </Stack>
+        <Paper shadow="sm" radius="md" p="md">
+          <Title>Cart</Title>
+        </Paper>
+      </Group>
     );
   };
-  return <div>{itemList()}</div>;
+  return <div>{productList()}</div>;
 };
 export default Cart;
