@@ -9,10 +9,14 @@ import {
   Text,
   Title,
   Badge,
+  ActionIcon,
 } from "@mantine/core";
-import { useCart } from "../../hooks/cartContext";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useCart } from "../../hooks/cartContext";
 import styles from "./CartItem.module.css";
+
 const CartItem = ({ product }) => {
   //
   const {
@@ -41,6 +45,10 @@ const CartItem = ({ product }) => {
   const goToProductPage = (productId) => {
     navigate(`/product/${productId}`);
   };
+
+  const getItemPrice = () => {
+    return (product.price * product.count).toFixed(2);
+  };
   return (
     <Paper shadow="sm" radius="md" p="md" h="150">
       <Group>
@@ -56,6 +64,7 @@ const CartItem = ({ product }) => {
           <Title
             order={4}
             className={styles.productName}
+            maw={500}
             onClick={() => goToProductPage(product.id)}
           >
             {product.title}
@@ -84,9 +93,11 @@ const CartItem = ({ product }) => {
             +
           </Button>
         </Button.Group>
-        <Stack>
-          <Text>{product.price}</Text>
-          <Button onClick={() => handleRemove()}>c</Button>
+        <Stack align="flex-end">
+          <Text>${getItemPrice()}</Text>
+          <ActionIcon variant="subtle" m={0} onClick={() => handleRemove()}>
+            <FontAwesomeIcon icon={faTrashCan} />
+          </ActionIcon>
         </Stack>
       </Group>
     </Paper>

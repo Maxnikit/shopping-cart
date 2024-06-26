@@ -10,6 +10,8 @@ function App() {
   // TODO make it so burger closes when clicking links on mobile
   // TODO fix layout shift by scrollbar
   // TODO add navigation to home when pressing title
+
+  // TODO
   const [opened, { toggle }] = useDisclosure();
   return (
     <AppShell

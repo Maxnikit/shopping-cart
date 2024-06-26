@@ -65,6 +65,14 @@ export const CartProvider = ({ children }) => {
     saveCart(cartItems);
   }, [cartItems]);
 
+  const getTotalItemPrice = () => {
+    return cartItems.reduce((acc, item) => acc + item.price * item.count, 0);
+  };
+
+  const getTotalItemCount = () => {
+    return cartItems.reduce((acc, item) => acc + item.count, 0);
+  };
+
   const contextValue = {
     cartItems,
     addToCart: (item) => {
@@ -82,6 +90,8 @@ export const CartProvider = ({ children }) => {
     clearCart: () => {
       dispatch({ type: "CLEAR_CART" });
     },
+    getTotalItemPrice,
+    getTotalItemCount,
   };
 
   return (
