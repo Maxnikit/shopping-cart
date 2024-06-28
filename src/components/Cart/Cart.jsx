@@ -1,21 +1,19 @@
 import {
   Button,
-  Flex,
+  Center,
   Group,
-  Image,
-  List,
   Paper,
   Stack,
   Text,
   Title,
-  Divider,
 } from "@mantine/core";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../hooks/cartContext";
 import CartItem from "../CartItem/CartItem";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const {
     cartItems,
     addToCart,
@@ -26,8 +24,11 @@ const Cart = () => {
     getTotalItemCount,
     getTotalItemPrice,
   } = useCart();
-  console.log(cartItems);
 
+  const goToCheckout = () => {
+    navigate("/checkout");
+    clearCart();
+  };
   const getFormattedTotalCount = () => {
     const itemCount = getTotalItemCount();
     if (itemCount === 1) {
@@ -36,21 +37,30 @@ const Cart = () => {
       return `${itemCount} items`;
     }
   };
-  const productList = () => {
+
+  const emptyCartMessage = () => {
     return (
-      <Stack gap={20} miw={1000}>
-        {/* Temporary clean button */}
-        <Button onClick={clearCart}>Clear</Button>
-        {cartItems.map((product) => (
-          <CartItem product={product} key={product.id} />
-        ))}
-      </Stack>
+      <>
+        <Stack align="center">
+          <Title>Looks like your cart is empty!</Title>
+          <Text>
+            Why not look what we have <Link to="/">here?</Link>
+          </Text>
+        </Stack>
+      </>
     );
   };
-  return (
-    <>
+  const defaultCart = () => {
+    return (
       <Group justify="center" align="start">
-        {productList()}
+        <Stack gap={20} miw={1000}>
+          {/* Temporary clean button */}
+          <Button onClick={clearCart}>Clear</Button>
+          {cartItems.map((product) => (
+            <CartItem product={product} key={product.id} />
+          ))}
+        </Stack>
+
         <Paper
           shadow="sm"
           radius="md"
@@ -59,18 +69,25 @@ const Cart = () => {
           style={{ position: "sticky", top: "60px" }}
         >
           <Stack align="space-between">
-            <Text c={"dimmed"}>{getFormattedTotalCount()}</Text>
+            <Text c="dimmed">{getFormattedTotalCount()}</Text>
             <Group justify="space-between">
               <Title order={3}>Total: </Title>
               <Title order={3}>${getTotalItemPrice().toFixed(2)}</Title>
             </Group>
-            <Link to="/checkout">
-              <Button fullWidth>Buy</Button>
-            </Link>
+            <Button
+              onClick={() => {
+                goToCheckout();
+              }}
+              fullWidth
+            >
+              Buy
+            </Button>
           </Stack>
         </Paper>
       </Group>
-    </>
-  );
+    );
+  };
+  console.log(cartItems);
+  return <>{cartItems.length ? defaultCart() : emptyCartMessage()}</>;
 };
 export default Cart;
