@@ -4,7 +4,7 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import Shop from "./components/Shop/Shop";
 import Cart from "./components/Cart/Cart";
 import ProductPage from "./components/ProductPage/ProductPage";
-import Checkout from "./components/Checkout/CheckoutWithCreditCard";
+import Checkout from "./components/Checkout/Checkout";
 
 const routes = [
   {
