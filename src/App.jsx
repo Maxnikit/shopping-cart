@@ -4,13 +4,12 @@ import { Outlet } from "react-router-dom";
 import { Group, AppShell, Burger } from "@mantine/core";
 import HeaderTitle from "./components/HeaderTitle/HeaderTitle";
 import NavButtons from "./components/NavButtons/NavButtons";
+import Footer from "./components/Footer/Footer";
 import "./style.css";
 
 function App() {
   // TODO Make title smaller on mobile(or header bigger)
   // TODO make it so burger closes when clicking links on mobile
-  // TODO fix layout shift by scrollbar
-  // TODO add navigation to home when pressing title
 
   // TODO add a skeleton for loading
   // TODO add some big greencheck icon for finishing checkout?
@@ -43,6 +42,9 @@ function App() {
       <AppShell.Main>
         <Outlet />
       </AppShell.Main>
+      {/* <AppShell.Footer> */}
+      <Footer />
+      {/* </AppShell.Footer> */}
     </AppShell>
   );
 }
