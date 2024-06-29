@@ -4,6 +4,7 @@ import { Outlet } from "react-router-dom";
 import { Group, AppShell, Burger } from "@mantine/core";
 import HeaderTitle from "./components/HeaderTitle/HeaderTitle";
 import NavButtons from "./components/NavButtons/NavButtons";
+import "./style.css";
 
 function App() {
   // TODO Make title smaller on mobile(or header bigger)
@@ -11,7 +12,9 @@ function App() {
   // TODO fix layout shift by scrollbar
   // TODO add navigation to home when pressing title
 
-  // TODO
+  // TODO add a skeleton for loading
+  // TODO add some big greencheck icon for finishing checkout?
+  // TODO add credit card info for checkout and adress
   const [opened, { toggle }] = useDisclosure();
   return (
     <AppShell
