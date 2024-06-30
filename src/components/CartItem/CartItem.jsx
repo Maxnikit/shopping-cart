@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../../hooks/cartContext";
-import styles from "./CartItem.module.css";
+import classes from "./CartItem.module.css";
 
 const CartItem = ({ product }) => {
   //
@@ -58,12 +58,12 @@ const CartItem = ({ product }) => {
           fit="contain"
           src={product.image}
           onClick={() => goToProductPage(product.id)}
-          className={styles.productImage}
+          className={classes.productImage}
         />
         <Stack style={{ flexGrow: 1 }}>
           <Title
             order={4}
-            className={styles.productName}
+            className={classes.productName}
             maw={500}
             onClick={() => goToProductPage(product.id)}
           >
@@ -93,7 +93,7 @@ const CartItem = ({ product }) => {
             +
           </Button>
         </Button.Group>
-        <Stack align="flex-end">
+        <Stack align="flex-end" w={60}>
           <Text>${getItemPrice()}</Text>
           <ActionIcon variant="subtle" m={0} onClick={() => handleRemove()}>
             <FontAwesomeIcon icon={faTrashCan} />

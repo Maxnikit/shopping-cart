@@ -51,7 +51,7 @@ const ProductCard = ({ product }) => {
       radius="md"
       withBorder
       key={id}
-      style={{ width: 300 }}
+      w={{ base: "40%", sm: "250px" }}
     >
       <Flex direction="column">
         <Card.Section
