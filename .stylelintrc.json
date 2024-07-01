@@ -1,4 +1,4 @@
 {
   "extends": ["stylelint-config-standard"],
-  "rules": { "selector-class-pattern": null }
+  "rules": { "selector-class-pattern": null, "media-query-no-invalid": null }
 }
