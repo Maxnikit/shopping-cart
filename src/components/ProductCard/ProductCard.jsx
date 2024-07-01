@@ -20,29 +20,7 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = () => {
     addToCart(product);
   };
-  const buyButton = () => {
-    if (isProductInCart) {
-      return (
-        <Group>
-          <Button
-            radius="md"
-            onClick={() => {
-              goToCart();
-            }}
-            color="green"
-            fullWidth
-          >
-            <Text>In cart</Text>
-          </Button>
-        </Group>
-      );
-    }
-    return (
-      <Button radius="md" onClick={() => handleAddToCart()}>
-        <Text>Add to Cart</Text>
-      </Button>
-    );
-  };
+
   return (
     <Card
       data-testid="product"
@@ -51,14 +29,11 @@ const ProductCard = ({ product }) => {
       radius="md"
       withBorder
       key={id}
-      w={{ base: "40%", sm: "250px" }}
+      className={style.card}
     >
       <Flex direction="column">
-        <Card.Section
-          className={style.productImage}
-          onClick={() => goToProductPage(id)}
-        >
-          <Image src={image} height={200} alt={title} fit="contain" />
+        <Card.Section onClick={() => goToProductPage(id)}>
+          <Image className={style.productImage} src={image} alt={title} />
         </Card.Section>
         <Text size="lg" fw={500}>
           {price}$
@@ -76,7 +51,25 @@ const ProductCard = ({ product }) => {
           <Rating defaultValue={rating.rate} readOnly />
           <Text>{rating.count} reviews</Text>
         </Group>
-        {buyButton()}
+        {isProductInCart ? (
+          <Button
+            radius="md"
+            color="green"
+            fullWidth
+            onClick={() => navigate(`/cart`)}
+            className={style.inCartButton}
+          >
+            In cart
+          </Button>
+        ) : (
+          <Button
+            radius="md"
+            onClick={handleAddToCart}
+            className={style.addToCartButton}
+          >
+            Add to Cart
+          </Button>
+        )}
       </Flex>
     </Card>
   );
