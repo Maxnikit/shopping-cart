@@ -17,7 +17,7 @@ function App() {
   const [opened, { toggle }] = useDisclosure();
   return (
     <AppShell
-      header={{ height: { sm: 100, md: 60 } }}
+      header={{ height: 60 }}
       navbar={{
         width: 300,
         breakpoint: "sm",
