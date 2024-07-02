@@ -47,6 +47,7 @@ const Cart = () => {
           shadow="sm"
           radius="md"
           p="md"
+
           // style={{ position: "sticky", top: "60px" }}
         >
           <Stack align="space-between">

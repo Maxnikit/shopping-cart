@@ -52,25 +52,27 @@ const CartItem = ({ product }) => {
   };
   return (
     <Paper shadow="sm" radius="md" p="md">
-      <Group>
-        <Image
-          fit="contain"
-          src={product.image}
-          onClick={() => goToProductPage(product.id)}
-          className={classes.productImage}
-        />
-        <Stack style={{ flexGrow: 1 }}>
-          <Title
-            order={4}
-            className={classes.productName}
+      <Flex direction={{ base: "column", xs: "row" }} gap={10}>
+        <Group flex={1} wrap="no-wrap">
+          <Image
+            src={product.image}
             onClick={() => goToProductPage(product.id)}
-          >
-            {product.title}
-          </Title>
-          <Badge>{product.category}</Badge>
-        </Stack>
-        <Box className={classes.buttonsAndPriceContainer}>
-          <Button.Group>
+            className={classes.productImage}
+          />
+          <Stack>
+            <Text
+              // order={4}
+              className={classes.productName}
+              onClick={() => goToProductPage(product.id)}
+            >
+              {product.title}
+            </Text>
+            <Badge>{product.category}</Badge>
+          </Stack>
+        </Group>
+
+        <Flex direction={{ base: "row", xs: "column" }}>
+          <Button.Group flex={1}>
             <Button
               variant="light"
               color="red"
@@ -90,14 +92,16 @@ const CartItem = ({ product }) => {
               +
             </Button>
           </Button.Group>
-          <Box className={classes.priceAndTrashContainer}>
-            <Text>${getItemPrice()}</Text>
+          <Flex direction={{ base: "row" }} gap={10} align="center">
+            <Text flex={1} fw={600}>
+              ${getItemPrice()}
+            </Text>
             <ActionIcon variant="subtle" m={0} onClick={() => handleRemove()}>
               <FontAwesomeIcon icon={faTrashCan} />
             </ActionIcon>
-          </Box>
-        </Box>
-      </Group>
+          </Flex>
+        </Flex>
+      </Flex>
     </Paper>
   );
 };

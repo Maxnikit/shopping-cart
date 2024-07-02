@@ -66,13 +66,7 @@ const ProductPageComponent = ({ product }) => {
               goToCart();
             }}
           >
-            <Text size="lg">
-              {count}{" "}
-              <Text component="span" size="sm">
-                {" "}
-                in cart
-              </Text>
-            </Text>
+            <Text size="lg">{count} </Text>
           </Button>
           <Button color="green" onClick={() => handleIncrement()}>
             +
