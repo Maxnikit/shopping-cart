@@ -1,6 +1,7 @@
 import {
   Button,
   Flex,
+  Box,
   Group,
   Image,
   List,
@@ -50,11 +51,9 @@ const CartItem = ({ product }) => {
     return (product.price * product.count).toFixed(2);
   };
   return (
-    <Paper shadow="sm" radius="md" p="md" h="150">
+    <Paper shadow="sm" radius="md" p="md">
       <Group>
         <Image
-          h={100}
-          miw={100}
           fit="contain"
           src={product.image}
           onClick={() => goToProductPage(product.id)}
@@ -64,41 +63,40 @@ const CartItem = ({ product }) => {
           <Title
             order={4}
             className={classes.productName}
-            maw={500}
             onClick={() => goToProductPage(product.id)}
           >
             {product.title}
           </Title>
           <Badge>{product.category}</Badge>
         </Stack>
-        <Button.Group>
-          <Button variant="light" color="red" onClick={() => handleDecrement()}>
-            -
-          </Button>
+        <Box className={classes.buttonsAndPriceContainer}>
+          <Button.Group>
+            <Button
+              variant="light"
+              color="red"
+              onClick={() => handleDecrement()}
+            >
+              -
+            </Button>
 
-          <Button radius="md" variant="light">
-            <Text size="lg">
-              {product.count}{" "}
-              <Text component="span" size="sm">
-                {" "}
-                in cart
-              </Text>
-            </Text>
-          </Button>
-          <Button
-            color="green"
-            variant="light"
-            onClick={() => handleIncrement()}
-          >
-            +
-          </Button>
-        </Button.Group>
-        <Stack align="flex-end" w={60}>
-          <Text>${getItemPrice()}</Text>
-          <ActionIcon variant="subtle" m={0} onClick={() => handleRemove()}>
-            <FontAwesomeIcon icon={faTrashCan} />
-          </ActionIcon>
-        </Stack>
+            <Button radius="md" variant="light">
+              <Text size="lg">{product.count} </Text>
+            </Button>
+            <Button
+              color="green"
+              variant="light"
+              onClick={() => handleIncrement()}
+            >
+              +
+            </Button>
+          </Button.Group>
+          <Box className={classes.priceAndTrashContainer}>
+            <Text>${getItemPrice()}</Text>
+            <ActionIcon variant="subtle" m={0} onClick={() => handleRemove()}>
+              <FontAwesomeIcon icon={faTrashCan} />
+            </ActionIcon>
+          </Box>
+        </Box>
       </Group>
     </Paper>
   );

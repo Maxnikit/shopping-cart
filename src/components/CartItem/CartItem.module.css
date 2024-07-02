@@ -3,10 +3,40 @@
   cursor: pointer;
 }
 
+.productImage {
+  width: 100%; /* Image takes full width of the card */
+  height: 80px; /* Fixed height for consistency */
+  object-fit: contain; /* Ensure images cover the area well without distortion */
+}
+
 .productImage:hover {
   cursor: pointer;
 }
 
-.itemPrice {
-  width: ;
+.priceAndTrashContainer {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.buttonsAndPriceContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .priceAndTrashContainer {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  .buttonsAndPriceContainer {
+    align-items: flex-end;
+    gap: 10px;
+    width: auto;
+  }
 }
