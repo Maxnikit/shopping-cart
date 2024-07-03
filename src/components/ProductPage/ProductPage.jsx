@@ -10,7 +10,9 @@ import {
   Stack,
   Badge,
   Paper,
+  Skeleton,
 } from "@mantine/core";
+import ProductPageSkeleton from "./ProductPageSkeleton";
 import { useCart } from "../../hooks/cartContext";
 import { getProductById } from "../../api/getProducts";
 
@@ -26,7 +28,7 @@ const ProductPage = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <ProductPageSkeleton />;
   }
 
   if (error) {

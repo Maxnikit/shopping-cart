@@ -1,6 +1,7 @@
-import { Flex } from "@mantine/core";
+import { Flex, Skeleton } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../ProductCard/ProductCard";
+import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { getAllProducts } from "../../api/getProducts";
 
 const Shop = () => {
@@ -14,7 +15,13 @@ const Shop = () => {
   });
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return (
+      <Flex wrap="wrap" justify="center" align="center" gap="lg">
+        {Array.from({ length: 10 }).map((_, index) => (
+          <ProductCardSkeleton key={index} />
+        ))}
+      </Flex>
+    );
   }
 
   // to handle error
