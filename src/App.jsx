@@ -6,6 +6,7 @@ import HeaderTitle from "./components/HeaderTitle/HeaderTitle";
 import NavButtons from "./components/NavButtons/NavButtons";
 import Footer from "./components/Footer/Footer";
 import "./style.css";
+import ScrollToTop from "./utils/scrollToTop";
 
 function App() {
   // TODO Make title smaller on mobile(or header bigger)
@@ -25,13 +26,20 @@ function App() {
       }}
       padding="md"
     >
+      <ScrollToTop />
       <AppShell.Header>
         <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          <Burger
+            opened={opened}
+            onClick={toggle}
+            hiddenFrom="sm"
+            size="sm"
+            aria-label="Toggle navigation"
+          />
           <Group justify="space-between" style={{ flex: 1 }}>
             <HeaderTitle />
             <Group ml="xl" gap={0} visibleFrom="sm">
-              <NavButtons />
+              <NavButtons burgerToggle={toggle} />
             </Group>
           </Group>
         </Group>
