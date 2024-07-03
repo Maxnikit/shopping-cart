@@ -53,6 +53,7 @@ const ProductCard = ({ product }) => {
         </Group>
         {isProductInCart ? (
           <Button
+            mt={10}
             radius="md"
             color="green"
             fullWidth
@@ -63,6 +64,7 @@ const ProductCard = ({ product }) => {
           </Button>
         ) : (
           <Button
+            mt={10}
             radius="md"
             onClick={handleAddToCart}
             className={style.addToCartButton}

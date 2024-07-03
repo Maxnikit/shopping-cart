@@ -11,6 +11,7 @@
   width: 100%; /* Image takes full width of the card */
   height: 200px; /* Fixed height for consistency */
   object-fit: contain; /* Ensure images cover the area well without distortion */
+  padding: 10px;
 }
 
 .productImage:hover {
@@ -45,7 +46,7 @@
 @media (min-width: $mantine-breakpoint-lg) {
   .card {
     width: calc(
-      15% - 20px
+      20% - 20px
     ); /* Adjust width for 4-column layout, considering some margin */
   }
 }
