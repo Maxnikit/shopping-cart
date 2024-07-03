@@ -4,15 +4,17 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-const NavButtons = () => {
+const NavButtons = (burgerToggle) => {
   const cartIcon = <FontAwesomeIcon icon={faCartShopping} />;
   return (
     <>
       <Link to="/">
-        <Button variant="subtle">Shop</Button>
+        <Button variant="subtle" onClick={burgerToggle}>
+          Shop
+        </Button>
       </Link>
       <Link to="/cart">
-        <Button variant="subtle" leftSection={cartIcon}>
+        <Button variant="subtle" onClick={burgerToggle} leftSection={cartIcon}>
           Cart
         </Button>
       </Link>
