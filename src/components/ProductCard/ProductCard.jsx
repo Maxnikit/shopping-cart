@@ -1,4 +1,13 @@
-import { Card, Image, Text, Button, Group, Flex, Rating } from "@mantine/core";
+import {
+  Card,
+  Image,
+  Text,
+  Button,
+  Group,
+  Flex,
+  Rating,
+  Tooltip,
+} from "@mantine/core";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import style from "./ProductCard.module.css";
@@ -31,18 +40,19 @@ const ProductCard = ({ product }) => {
         <Text size="lg" fw={500}>
           {price}$
         </Text>
-
-        <Text
-          component={Link}
-          fw={400}
-          lineClamp={1}
-          data-testid="productName"
-          to={`/product/${product.id}`}
-          className={style.productName}
-          // underline="never"
-        >
-          {title}
-        </Text>
+        <Tooltip label={title} openDelay={500}>
+          <Text
+            size="sm"
+            component={Link}
+            fw={400}
+            lineClamp={1}
+            data-testid="productName"
+            to={`/product/${product.id}`}
+            className={style.productName}
+          >
+            {title}
+          </Text>
+        </Tooltip>
         <Group>
           <Rating defaultValue={rating.rate} readOnly />
           <Text>{rating.count} reviews</Text>
