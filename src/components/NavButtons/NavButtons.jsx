@@ -8,8 +8,8 @@ import { IconHome2, IconShoppingCart } from "@tabler/icons-react";
 import classes from "./NavButtons.module.css";
 
 const links = [
-  { link: "/", label: "Home" },
-  { link: "/cart", label: "Cart" },
+  { link: "/", label: "Home", icon: <IconHome2 /> },
+  { link: "/cart", label: "Cart", icon: <IconShoppingCart /> },
 ];
 
 const NavButtons = (burgerToggle) => {
@@ -18,40 +18,20 @@ const NavButtons = (burgerToggle) => {
   // rightclick - open in new tab
 
   const items = links.map((link) => (
-    <Link
+    <Button
+      component={Link}
+      variant="subtle"
       key={link.label}
       to={link.link}
       className={classes.link}
+      leftSection={link.icon}
       // onClick={(event) => event.preventDefault()}
     >
       {link.label}
-    </Link>
+    </Button>
   ));
 
-  return (
-    <>
-      {items}
-      {/* <Button
-        variant="subtle"
-        onClick={() => {
-          navigate(`/`);
-          burgerToggle();
-        }}
-      >
-        Shop
-      </Button>
-      <Button
-        variant="subtle"
-        leftSection={<IconShoppingCart />}
-        onClick={() => {
-          navigate(`/cart`);
-          burgerToggle();
-        }}
-      >
-        Cart
-      </Button> */}
-    </>
-  );
+  return <>{items}</>;
 };
 
 export default NavButtons;
