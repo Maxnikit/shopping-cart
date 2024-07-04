@@ -9,7 +9,7 @@ import {
   Badge,
   ActionIcon,
 } from "@mantine/core";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "../../hooks/useCart";
@@ -37,11 +37,6 @@ const CartItem = ({ product }) => {
     removeFromCart(product.id);
   };
 
-  const navigate = useNavigate();
-  const goToProductPage = (productId) => {
-    navigate(`/product/${productId}`);
-  };
-
   const getItemPrice = () => {
     return (product.price * product.count).toFixed(2);
   };
@@ -49,16 +44,14 @@ const CartItem = ({ product }) => {
     <Paper shadow="sm" radius="md" p="md">
       <Flex direction={{ base: "column", xs: "row" }} gap={10}>
         <Group flex={1} wrap="no-wrap">
-          <Image
-            src={product.image}
-            onClick={() => goToProductPage(product.id)}
-            className={classes.productImage}
-          />
+          <Link to={`/product/${product.id}`}>
+            <Image src={product.image} className={classes.productImage} />
+          </Link>
           <Stack>
             <Text
-              // order={4}
+              component={Link}
+              to={`/product/${product.id}`}
               className={classes.productName}
-              onClick={() => goToProductPage(product.id)}
             >
               {product.title}
             </Text>

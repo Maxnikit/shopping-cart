@@ -1,6 +1,15 @@
-import { Card, Image, Text, Button, Group, Flex, Rating } from "@mantine/core";
+import {
+  Card,
+  Image,
+  Text,
+  Button,
+  Group,
+  Flex,
+  Rating,
+  Anchor,
+} from "@mantine/core";
 import PropTypes from "prop-types";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import style from "./ProductCard.module.css";
 import { useCart } from "../../hooks/useCart";
 
@@ -30,18 +39,21 @@ const ProductCard = ({ product }) => {
       className={style.card}
     >
       <Flex direction="column">
-        <Card.Section onClick={() => goToProductPage(id)}>
+        <Card.Section component={Link} to={`/product/${product.id}`}>
           <Image className={style.productImage} src={image} alt={title} />
         </Card.Section>
         <Text size="lg" fw={500}>
           {price}$
         </Text>
+
         <Text
+          component={Link}
           fw={400}
           lineClamp={1}
           data-testid="productName"
+          to={`/product/${product.id}`}
           className={style.productName}
-          onClick={() => goToProductPage(id)}
+          // underline="never"
         >
           {title}
         </Text>
@@ -51,11 +63,12 @@ const ProductCard = ({ product }) => {
         </Group>
         {isProductInCart ? (
           <Button
+            component={Link}
             mt={10}
             radius="md"
             color="green"
             fullWidth
-            onClick={() => navigate(`/cart`)}
+            to="/cart"
             className={style.inCartButton}
           >
             In cart
