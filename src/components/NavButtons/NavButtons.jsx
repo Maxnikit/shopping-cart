@@ -1,5 +1,5 @@
 import { Button } from "@mantine/core";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
@@ -10,21 +10,25 @@ const NavButtons = (burgerToggle) => {
   const cartIcon = <FontAwesomeIcon icon={faCartShopping} />;
   return (
     <>
-      <Link to="/">
-        <Button variant="subtle" onClick={burgerToggle}>
-          Shop
-        </Button>
-      </Link>
-      {/* <Link to="/cart"> */}
       <Button
         variant="subtle"
-        // onClick={burgerToggle}
+        onClick={() => {
+          navigate(`/`);
+          burgerToggle();
+        }}
+      >
+        Shop
+      </Button>
+      <Button
+        variant="subtle"
         leftSection={cartIcon}
-        onClick={() => navigate(`/cart`)}
+        onClick={() => {
+          navigate(`/cart`);
+          burgerToggle();
+        }}
       >
         Cart
       </Button>
-      {/* </Link> */}
     </>
   );
 };
