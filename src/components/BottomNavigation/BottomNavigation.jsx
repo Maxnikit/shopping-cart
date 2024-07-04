@@ -1,7 +1,6 @@
-import { Transition, Button, Group, Indicator } from "@mantine/core";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { IconHome2, IconShoppingCart } from "@tabler/icons-react";
+import { Tabs } from "@mantine/core";
+import { useNavigate, useLocation } from "react-router-dom";
+import { IconHome2 } from "@tabler/icons-react";
 import { CartIcon } from "../CartIcon/CartIcon";
 
 const links = [
@@ -13,34 +12,29 @@ const links = [
   },
 ];
 export function BottomNavigation() {
-  // const [mounted, setMounted] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const items = links.map((link) => (
-    <Button
-      style={{ overflow: "visible" }}
+    <Tabs.Tab
       size="lg"
-      component={Link}
-      variant="subtle"
       key={link.label}
-      to={link.link}
-      //   className={classes.link}
+      value={link.link}
       leftSection={link.icon}
-      p={0}
+      // p={0}
     >
       {link.label}
-    </Button>
+    </Tabs.Tab>
   ));
 
   return (
-    // <Transition
-    //   mounted={mounted}
-    //   transition="slide-up"
-    //   duration={400}
-    //   timingFunction="ease"
-    // >
-    <Group h="100%" align="center" grow>
-      {items}
-    </Group>
-
-    // </Transition>
+    <Tabs
+      defaultValue="/"
+      inverted
+      value={location.pathname}
+      onChange={(value) => navigate(value)}
+    >
+      <Tabs.List grow>{items}</Tabs.List>
+    </Tabs>
   );
 }
