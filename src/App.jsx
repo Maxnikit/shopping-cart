@@ -19,7 +19,7 @@ function App() {
     <AppShell
       header={{ height: 60 }}
       footer={{
-        height: 35,
+        height: 55,
         collapsed: !isMobile,
       }}
       padding="md"

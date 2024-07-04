@@ -11,12 +11,14 @@ export function BottomNavigation() {
   const [mounted, setMounted] = useState(false);
   const items = links.map((link) => (
     <Button
+      size="lg"
       component={Link}
       variant="subtle"
       key={link.label}
       to={link.link}
       //   className={classes.link}
       leftSection={link.icon}
+      p={0}
     >
       {link.label}
     </Button>
@@ -29,7 +31,9 @@ export function BottomNavigation() {
     //   duration={400}
     //   timingFunction="ease"
     // >
-    <Group grow>{items}</Group>
+    <Group h="100%" align="center" grow>
+      {items}
+    </Group>
 
     // </Transition>
   );
