@@ -1,16 +1,22 @@
-import { Transition, Button, Group } from "@mantine/core";
+import { Transition, Button, Group, Indicator } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IconHome2, IconShoppingCart } from "@tabler/icons-react";
+import { CartIcon } from "../CartIcon/CartIcon";
 
 const links = [
   { link: "/", label: "Home", icon: <IconHome2 /> },
-  { link: "/cart", label: "Cart", icon: <IconShoppingCart /> },
+  {
+    link: "/cart",
+    label: "Cart",
+    icon: <CartIcon />,
+  },
 ];
 export function BottomNavigation() {
-  const [mounted, setMounted] = useState(false);
+  // const [mounted, setMounted] = useState(false);
   const items = links.map((link) => (
     <Button
+      style={{ overflow: "visible" }}
       size="lg"
       component={Link}
       variant="subtle"
@@ -23,7 +29,7 @@ export function BottomNavigation() {
       {link.label}
     </Button>
   ));
-  console.log(items);
+
   return (
     // <Transition
     //   mounted={mounted}
