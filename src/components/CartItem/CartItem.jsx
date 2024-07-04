@@ -1,30 +1,25 @@
 import {
   Button,
   Flex,
-  Box,
   Group,
   Image,
-  List,
   Paper,
   Stack,
   Text,
-  Title,
   Badge,
   ActionIcon,
 } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { useCart } from "../../hooks/cartContext";
+import { useCart } from "../../hooks/useCart";
 import classes from "./CartItem.module.css";
 
 const CartItem = ({ product }) => {
   //
   const {
-    cartItems,
-    addToCart,
     removeFromCart,
-    clearCart,
+
     incrementItemCount,
     decrementItemCount,
   } = useCart();

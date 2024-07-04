@@ -1,15 +1,7 @@
-import {
-  Button,
-  Center,
-  Group,
-  Paper,
-  Stack,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Button, Group, Paper, Stack, Text, Title } from "@mantine/core";
 
-import { Link, useNavigate } from "react-router-dom";
-import { useCart } from "../../hooks/cartContext";
+import { useNavigate } from "react-router-dom";
+import { useCart } from "../../hooks/useCart";
 import CartItem from "../CartItem/CartItem";
 import EmptyCart from "./EmptyCart";
 import style from "./Cart.module.css";

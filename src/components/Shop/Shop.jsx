@@ -1,4 +1,4 @@
-import { Flex, Skeleton } from "@mantine/core";
+import { Flex } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";

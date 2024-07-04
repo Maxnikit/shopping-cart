@@ -2,7 +2,7 @@ import { Card, Image, Text, Button, Group, Flex, Rating } from "@mantine/core";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 import style from "./ProductCard.module.css";
-import { useCart } from "../../hooks/cartContext";
+import { useCart } from "../../hooks/useCart";
 
 const ProductCard = ({ product }) => {
   const { id, title, price, image, rating = { rate: 0, count: 0 } } = product;
@@ -11,11 +11,9 @@ const ProductCard = ({ product }) => {
   const goToProductPage = (productId) => {
     navigate(`/product/${productId}`);
   };
-  const goToCart = () => {
-    navigate(`/cart`);
-  };
+
   const { cartItems, addToCart } = useCart();
-  console.log(cartItems);
+
   const isProductInCart = cartItems.some((item) => item.id === product.id);
   const handleAddToCart = () => {
     addToCart(product);

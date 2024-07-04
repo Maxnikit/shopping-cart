@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useReducer } from "react";
 
-const CartContext = createContext();
+export const CartContext = createContext();
 
 const saveCart = (cartItems) => {
   localStorage.setItem("shoppingCart", JSON.stringify(cartItems));
@@ -99,10 +99,10 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-export const useCart = () => {
-  const context = useContext(CartContext);
-  if (!context) {
-    throw new Error("useCart must be used within a CartProvider");
-  }
-  return context;
-};
+// export const useCart = () => {
+//   const context = useContext(CartContext);
+//   if (!context) {
+//     throw new Error("useCart must be used within a CartProvider");
+//   }
+//   return context;
+// };

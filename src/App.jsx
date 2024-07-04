@@ -1,3 +1,5 @@
+"use client";
+
 import "@mantine/core/styles.css";
 import { useDisclosure } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
@@ -9,11 +11,6 @@ import "./style.css";
 import ScrollToTop from "./utils/scrollToTop";
 
 function App() {
-  // TODO Make title smaller on mobile(or header bigger)
-  // TODO make it so burger closes when clicking links on mobile
-
-  // TODO add a skeleton for loading
-  // TODO add some big greencheck icon for finishing checkout?
   // TODO add credit card info for checkout and adress
   const [opened, { toggle }] = useDisclosure();
   return (

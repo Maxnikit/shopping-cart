@@ -10,10 +10,9 @@ import {
   Stack,
   Badge,
   Paper,
-  Skeleton,
 } from "@mantine/core";
 import ProductPageSkeleton from "./ProductPageSkeleton";
-import { useCart } from "../../hooks/cartContext";
+import { useCart } from "../../hooks/useCart";
 import { getProductById } from "../../api/getProducts";
 
 const ProductPage = () => {

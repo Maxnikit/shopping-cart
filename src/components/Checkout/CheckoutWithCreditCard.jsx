@@ -1,32 +1,19 @@
 import {
   Button,
-  Flex,
   Group,
-  Image,
-  List,
-  Paper,
   Stack,
   Text,
   Title,
-  Divider,
   Card,
   Radio,
   Fieldset,
   TextInput,
   NumberInput,
 } from "@mantine/core";
-import { useCart } from "../../hooks/cartContext";
-import style from "./Checkout.module.css";
+import { useCart } from "../../hooks/useCart";
+
 const Checkout = () => {
-  const {
-    cartItems,
-    addToCart,
-    removeFromCart,
-    clearCart,
-    incrementItemCount,
-    decrementItemCount,
-    getTotalItemPrice,
-  } = useCart();
+  const { getTotalItemPrice } = useCart();
 
   return (
     <Card withBorder maw={500} m="auto" align="center">
@@ -44,20 +31,8 @@ const Checkout = () => {
           <TextInput placeholder="Name on card" />
           <NumberInput type="tel" hideControls placeholder="Card number" />
           <Group>
-            <NumberInput
-              w="40%"
-              className={style.inputFit}
-              placeholder="mm/yy"
-              type="tel"
-              maxlength="7"
-            />
-            <NumberInput
-              w="20%"
-              className={style.inputFit}
-              placeholder="CVV"
-              type="tel"
-              maxlength="4"
-            />
+            <NumberInput w="40%" placeholder="mm/yy" type="tel" maxlength="7" />
+            <NumberInput w="20%" placeholder="CVV" type="tel" maxlength="4" />
           </Group>
         </Stack>
       </Fieldset>
