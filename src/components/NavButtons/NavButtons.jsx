@@ -13,7 +13,6 @@ const links = [
 ];
 
 const NavButtons = (burgerToggle) => {
-  // const navigate = useNavigate();
   // TODO figure out why using Link leads to 404 when clicking it or manuall typing it in URL bar.
   // Link is generally better for navBar than navigate because it is semantically correct and allows for
   // rightclick - open in new tab

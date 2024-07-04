@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import {
   Image,
@@ -38,11 +38,6 @@ const ProductPage = () => {
 };
 
 const ProductPageComponent = ({ product }) => {
-  const navigate = useNavigate();
-  const goToCart = () => {
-    navigate(`/cart`);
-  };
-
   const {
     cartItems,
     addToCart,
@@ -61,12 +56,7 @@ const ProductPageComponent = ({ product }) => {
             -
           </Button>
 
-          <Button
-            radius="md"
-            onClick={() => {
-              goToCart();
-            }}
-          >
+          <Button component={Link} to="/cart" radius="md">
             <Text size="lg">{count} </Text>
           </Button>
           <Button color="green" onClick={() => handleIncrement()}>
