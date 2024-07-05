@@ -7,8 +7,13 @@ import {
 } from "../../api/getProducts";
 import { Button, Stack, Title, Radio, Autocomplete } from "@mantine/core";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-export function FilterMenu() {
+export function FilterMenu({ categoryName }) {
+  console.log(categoryName);
+  const navigate = useNavigate();
+  const [value, setValue] = useState(categoryName);
   const {
     data: allCategoriesWithInfo,
     isLoading,
@@ -27,13 +32,29 @@ export function FilterMenu() {
     return <div className="error">Error: cant get all categories</div>;
   }
 
+  function changeCategory(category) {
+    if (category === "All") {
+      navigate("/");
+      setValue(category);
+      return;
+    }
+    setValue(category);
+    navigate(`/category/${category}`);
+  }
+
   return (
     <Stack>
       <Autocomplete label="Search" />
       <Title>Categories</Title>
-      <Radio.Group name="category" label="Select category">
+      <Radio.Group
+        value={value}
+        onChange={changeCategory}
+        name="category"
+        label="Select category"
+      >
         <Stack>
-          <FilterCategory category="All" products={getAllProducts()} />
+          {/* TODO consider dropping allProducts in context or MobX to use value of all products here in products for proper count */}
+          <FilterCategory category="All" products={[1, 2, 3]} />
           {allCategoriesWithInfo.map(({ category, products }) => (
             <FilterCategory
               key={category}

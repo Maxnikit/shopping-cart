@@ -8,7 +8,7 @@ export function ShopPage() {
 
   return (
     <Flex align="start">
-      <FilterMenu />
+      <FilterMenu categoryName={categoryName} />
       <Shop category={categoryName} />
     </Flex>
   );
