@@ -5,6 +5,7 @@ import Shop from "./components/Shop/Shop";
 import Cart from "./components/Cart/Cart";
 import ProductPage from "./components/ProductPage/ProductPage";
 import Checkout from "./components/Checkout/Checkout";
+import { ShopPage } from "./components/ShopPage/ShopPage";
 
 const routes = [
   {
@@ -14,7 +15,7 @@ const routes = [
     children: [
       {
         index: true,
-        element: <Shop />,
+        element: <ShopPage />,
       },
       {
         path: "/cart",

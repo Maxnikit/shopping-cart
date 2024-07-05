@@ -2,7 +2,7 @@ import { Flex } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
-import { getAllProducts } from "../../api/getProducts";
+import { getAllCategories, getAllProducts } from "../../api/getProducts";
 
 const Shop = () => {
   const {
