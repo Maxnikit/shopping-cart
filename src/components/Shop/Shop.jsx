@@ -1,18 +1,28 @@
 import { Flex } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
-import { getAllCategories, getAllProducts } from "../../api/getProducts";
+import {
+  getAllCategories,
+  getAllProducts,
+  getInCategory,
+} from "../../api/getProducts";
 
-const Shop = () => {
+const Shop = ({ category }) => {
   const {
     data: allProducts,
     isLoading,
     error,
+    refetch,
   } = useQuery({
     queryKey: ["allProducts"],
-    queryFn: () => getAllProducts(),
+    queryFn: () => (category ? getInCategory(category) : getAllProducts()),
   });
+
+  useEffect(() => {
+    refetch();
+  }, [category]);
 
   if (isLoading) {
     return (

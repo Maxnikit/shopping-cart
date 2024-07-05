@@ -2,9 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 import {
   getAllCategories,
   getAllCategoriesWithInfo,
+  getAllProducts,
   getInCategory,
 } from "../../api/getProducts";
-import { Button, Stack, Title } from "@mantine/core";
+import { Button, Stack, Title, Radio, Autocomplete } from "@mantine/core";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
 
 export function FilterMenu() {
@@ -28,16 +29,20 @@ export function FilterMenu() {
 
   return (
     <Stack>
+      <Autocomplete label="Search" />
       <Title>Categories</Title>
-      <Stack>
-        {allCategoriesWithInfo.map(({ category, products }) => (
-          <FilterCategory
-            key={category}
-            category={category}
-            count={products.length}
-          />
-        ))}
-      </Stack>
+      <Radio.Group name="category" label="Select category">
+        <Stack>
+          <FilterCategory category="All" products={getAllProducts()} />
+          {allCategoriesWithInfo.map(({ category, products }) => (
+            <FilterCategory
+              key={category}
+              category={category}
+              products={products}
+            />
+          ))}
+        </Stack>
+      </Radio.Group>
     </Stack>
   );
 }

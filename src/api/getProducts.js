@@ -39,5 +39,3 @@ export async function getAllCategoriesWithInfo() {
     throw error;
   }
 }
-
-getAllCategoriesWithInfo();
