@@ -1,17 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
+import { Button, Stack, Title, Radio, Autocomplete } from "@mantine/core";
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { FilterCategory } from "../FilterCategory/FilterCategory";
 import {
-  getAllCategories,
+  // getAllCategories,
   getAllCategoriesWithInfo,
   getAllProducts,
   getInCategory,
 } from "../../api/getProducts";
-import { Button, Stack, Title, Radio, Autocomplete } from "@mantine/core";
-import { FilterCategory } from "../FilterCategory/FilterCategory";
-import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useStore } from "../../stores/productStore";
 
 export function FilterMenu({ categoryName }) {
-  console.log(categoryName);
+  const { getAllCategories } = useStore();
+  console.log(getAllCategories());
+  const categories = getAllCategories();
+  // console.log(categoryName);
   const navigate = useNavigate();
   const [value, setValue] = useState(categoryName);
   const {
@@ -54,12 +58,11 @@ export function FilterMenu({ categoryName }) {
       >
         <Stack>
           {/* TODO consider dropping allProducts in context or MobX to use value of all products here in products for proper count */}
-          <FilterCategory category="All" products={[1, 2, 3]} />
-          {allCategoriesWithInfo.map(({ category, products }) => (
+          {categories.map(({ categoryName, productCount }) => (
             <FilterCategory
-              key={category}
-              category={category}
-              products={products}
+              key={categoryName}
+              categoryName={categoryName}
+              productCount={productCount}
             />
           ))}
         </Stack>

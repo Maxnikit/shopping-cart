@@ -8,21 +8,22 @@ import {
   getAllProducts,
   getInCategory,
 } from "../../api/getProducts";
+import { useStore } from "../../stores/productStore";
 
-const Shop = ({ category }) => {
+const Shop = () => {
+  const { updateProducts } = useStore();
   const {
     data: allProducts,
     isLoading,
     error,
-    refetch,
   } = useQuery({
     queryKey: ["allProducts"],
-    queryFn: () => (category ? getInCategory(category) : getAllProducts()),
+    queryFn: () => getAllProducts(),
   });
 
   useEffect(() => {
-    refetch();
-  }, [category]);
+    updateProducts(allProducts);
+  }, [allProducts]);
 
   if (isLoading) {
     return (
