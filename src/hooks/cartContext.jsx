@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-
+// TODO change context to zustand
 export const CartContext = createContext();
 
 const saveCart = (cartItems) => {

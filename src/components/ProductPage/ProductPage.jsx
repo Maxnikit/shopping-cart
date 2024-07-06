@@ -102,6 +102,7 @@ const ProductPageComponent = ({ product }) => {
 
         <Stack w={500}>
           <Title order={2}>{title}</Title>
+          {/* TODO make Badge clickable and redirect to category */}
           <Badge>{category}</Badge>
           <Group>
             <Rating defaultValue={rating.rate} readOnly />

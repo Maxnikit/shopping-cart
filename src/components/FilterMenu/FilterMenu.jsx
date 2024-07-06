@@ -35,7 +35,6 @@ export function FilterMenu() {
         label="Select category"
       >
         <Stack mt={10}>
-          {/* TODO consider dropping allProducts in context or MobX to use value of all products here in products for proper count */}
           {categories.map(({ categoryName, productCount }) => (
             <FilterCategory
               key={categoryName}
