@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import style from "./ProductCard.module.css";
 import { useCartStore } from "../../stores/cartStore";
 import { IconStar, IconStarFilled } from "@tabler/icons-react";
+import { ProductRating } from "../ProductRating/ProductRating";
 
 const ProductCard = ({ product }) => {
   const { id, title, price, image, rating = { rate: 0, count: 0 } } = product;
@@ -54,13 +55,7 @@ const ProductCard = ({ product }) => {
             {title}
           </Text>
         </Tooltip>
-        <Group gap={5}>
-          <Group gap={0}>
-            <IconStarFilled color="gold" />
-            <Text>{rating.rate}</Text>
-          </Group>
-          <Text c="dimmed">| {rating.count} reviews</Text>
-        </Group>
+        <ProductRating rating={product.rating} />
         {isProductInCart ? (
           <Button
             component={Link}

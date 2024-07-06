@@ -14,6 +14,7 @@ import {
 import ProductPageSkeleton from "./ProductPageSkeleton";
 import { useCartStore } from "../../stores/cartStore";
 import { getProductById } from "../../api/getProducts";
+import { ProductRating } from "../ProductRating/ProductRating";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -104,10 +105,7 @@ const ProductPageComponent = ({ product }) => {
           <Title order={2}>{title}</Title>
           {/* TODO make Badge clickable and redirect to category */}
           <Badge>{category}</Badge>
-          <Group>
-            <Rating defaultValue={rating.rate} readOnly />
-            <Text>{rating.count} reviews</Text>
-          </Group>
+          <ProductRating rating={rating} />
           <Text>{description}</Text>
           <Group align="center">
             <Text>{price}$</Text>
