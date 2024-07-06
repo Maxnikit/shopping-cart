@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
 import { useStore } from "../../stores/productStore";
+import { SearchBar } from "../SearchBar/SearchBar";
 
 export function FilterMenu() {
   const { getAllCategories } = useStore();
@@ -25,16 +26,15 @@ export function FilterMenu() {
   }
 
   return (
-    <Stack>
-      <Autocomplete label="Search" />
-      <Title>Categories</Title>
+    <Stack miw="15%">
+      {/* <Title order={2}>Filters</Title> */}
       <Radio.Group
         value={value}
         onChange={changeCategory}
         name="category"
         label="Select category"
       >
-        <Stack>
+        <Stack mt={10}>
           {/* TODO consider dropping allProducts in context or MobX to use value of all products here in products for proper count */}
           {categories.map(({ categoryName, productCount }) => (
             <FilterCategory
@@ -45,6 +45,7 @@ export function FilterMenu() {
           ))}
         </Stack>
       </Radio.Group>
+      <SearchBar />
     </Stack>
   );
 }

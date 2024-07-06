@@ -43,8 +43,13 @@ export const useStore = create((set) => ({
   getProductsByCategoryName: (categoryName) => {
     const { products } = useStore.getState();
     if (!products) return [];
-    console.log(categoryName);
-    console.log(products);
+
     return products.filter((product) => product.category === categoryName);
+  },
+
+  getArrayOfProductNames: () => {
+    const { products } = useStore.getState();
+    if (!products) return [];
+    return products.map((product) => product.title);
   },
 }));

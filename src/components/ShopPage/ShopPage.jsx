@@ -5,7 +5,7 @@ import Shop from "../Shop/Shop";
 
 export function ShopPage() {
   return (
-    <Flex align="start">
+    <Flex align="start" justify={"start"} gap={"lg"}>
       <FilterMenu />
       <Shop />
     </Flex>
