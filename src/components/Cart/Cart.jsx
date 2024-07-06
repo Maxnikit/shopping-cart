@@ -1,7 +1,7 @@
 import { Button, Group, Paper, Stack, Text, Title } from "@mantine/core";
 
 import { useNavigate } from "react-router-dom";
-import { useCart } from "../../hooks/useCart";
+import { useCartStore } from "../../stores/cartStore";
 import CartItem from "../CartItem/CartItem";
 import EmptyCart from "./EmptyCart";
 import style from "./Cart.module.css";
@@ -9,7 +9,7 @@ import style from "./Cart.module.css";
 const Cart = () => {
   const navigate = useNavigate();
   const { cartItems, clearCart, getTotalItemCount, getTotalItemPrice } =
-    useCart();
+    useCartStore();
 
   const goToCheckout = () => {
     navigate("/checkout");

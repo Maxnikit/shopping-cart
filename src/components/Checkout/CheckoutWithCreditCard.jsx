@@ -10,10 +10,10 @@ import {
   TextInput,
   NumberInput,
 } from "@mantine/core";
-import { useCart } from "../../hooks/useCart";
+import { useCartStore } from "../../stores/cartStore";
 
 const Checkout = () => {
-  const { getTotalItemPrice } = useCart();
+  const { getTotalItemPrice } = useCartStore();
 
   return (
     <Card withBorder maw={500} m="auto" align="center">

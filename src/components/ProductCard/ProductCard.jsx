@@ -11,12 +11,12 @@ import {
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import style from "./ProductCard.module.css";
-import { useCart } from "../../hooks/useCart";
+import { useCartStore } from "../../stores/cartStore";
 
 const ProductCard = ({ product }) => {
   const { id, title, price, image, rating = { rate: 0, count: 0 } } = product;
 
-  const { cartItems, addToCart } = useCart();
+  const { cartItems, addToCart } = useCartStore();
 
   const isProductInCart = cartItems.some((item) => item.id === product.id);
   const handleAddToCart = () => {

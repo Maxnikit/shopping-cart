@@ -2,11 +2,11 @@ import { Stack, Title, Radio, Autocomplete } from "@mantine/core";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
-import { useStore } from "../../stores/productStore";
+import { useProductStore } from "../../stores/productStore";
 import { SearchBar } from "../SearchBar/SearchBar";
 
 export function FilterMenu() {
-  const { getAllCategories } = useStore();
+  const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
   const { categoryName } = useParams();
   console.log(categoryName);

@@ -1,10 +1,10 @@
 import { Indicator } from "@mantine/core";
 import { IconShoppingCart } from "@tabler/icons-react";
 
-import { useCart } from "../../hooks/useCart";
+import { useCartStore } from "../../stores/cartStore";
 
 export const CartIcon = () => {
-  const { getTotalItemCount } = useCart();
+  const { getTotalItemCount } = useCartStore();
 
   return (
     <>

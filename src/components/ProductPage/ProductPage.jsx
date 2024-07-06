@@ -12,7 +12,7 @@ import {
   Paper,
 } from "@mantine/core";
 import ProductPageSkeleton from "./ProductPageSkeleton";
-import { useCart } from "../../hooks/useCart";
+import { useCartStore } from "../../stores/cartStore";
 import { getProductById } from "../../api/getProducts";
 
 const ProductPage = () => {
@@ -44,7 +44,7 @@ const ProductPageComponent = ({ product }) => {
     removeFromCart,
     incrementItemCount,
     decrementItemCount,
-  } = useCart();
+  } = useCartStore();
 
   const isProductInCart = cartItems.some((item) => item.id === product.id);
 

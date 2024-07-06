@@ -1,19 +1,19 @@
 import { create } from "zustand";
 
-export const useStore = create((set) => ({
+export const useProductStore = create((set) => ({
   products: [],
 
   removeAllProducts: () => set({ products: 0 }),
   updateProducts: (newProducts) => set({ products: newProducts }),
 
   getAllProducts: () => {
-    const { products } = useStore.getState();
+    const { products } = useProductStore.getState();
     if (!products) return [];
     return products;
   },
 
   getAllCategories: () => {
-    const { products } = useStore.getState();
+    const { products } = useProductStore.getState();
     if (!products) return [{ categoryName: "All", productCount: 0 }];
 
     // Initialize an object to count products per category
@@ -41,14 +41,14 @@ export const useStore = create((set) => ({
     ];
   },
   getProductsByCategoryName: (categoryName) => {
-    const { products } = useStore.getState();
+    const { products } = useProductStore.getState();
     if (!products) return [];
 
     return products.filter((product) => product.category === categoryName);
   },
 
   getArrayOfProductNames: () => {
-    const { products } = useStore.getState();
+    const { products } = useProductStore.getState();
     if (!products) return [];
     return products.map((product) => product.title);
   },

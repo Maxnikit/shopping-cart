@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { useCart } from "../../hooks/useCart";
+import { useCartStore } from "../../stores/cartStore";
 import classes from "./CartItem.module.css";
 
 const CartItem = ({ product }) => {
@@ -22,7 +22,7 @@ const CartItem = ({ product }) => {
 
     incrementItemCount,
     decrementItemCount,
-  } = useCart();
+  } = useCartStore();
   const handleIncrement = () => {
     incrementItemCount(product.id);
   };

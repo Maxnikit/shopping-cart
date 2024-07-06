@@ -5,12 +5,12 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
-import { useStore } from "../../stores/productStore";
+import { useProductStore } from "../../stores/productStore";
 
 const Shop = () => {
   const { categoryName } = useParams();
   const { updateProducts, getAllProducts, getProductsByCategoryName } =
-    useStore();
+    useProductStore();
   const {
     data: allProducts,
     isLoading,
