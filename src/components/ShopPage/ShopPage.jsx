@@ -4,12 +4,10 @@ import { FilterMenu } from "../FilterMenu/FilterMenu";
 import Shop from "../Shop/Shop";
 
 export function ShopPage() {
-  const { categoryName } = useParams();
-
   return (
     <Flex align="start">
-      <FilterMenu categoryName={categoryName} />
-      <Shop category={categoryName} />
+      <FilterMenu />
+      <Shop />
     </Flex>
   );
 }

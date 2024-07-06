@@ -1,24 +1,23 @@
 import { Flex } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
-import {
-  getAllCategories,
-  getAllProducts,
-  getInCategory,
-} from "../../api/getProducts";
+import { fetchAllProducts } from "../../api/getProducts";
 import { useStore } from "../../stores/productStore";
 
 const Shop = () => {
-  const { updateProducts } = useStore();
+  const { categoryName } = useParams();
+  const { updateProducts, getAllProducts, getProductsByCategoryName } =
+    useStore();
   const {
     data: allProducts,
     isLoading,
     error,
   } = useQuery({
     queryKey: ["allProducts"],
-    queryFn: () => getAllProducts(),
+    queryFn: () => fetchAllProducts(),
   });
 
   useEffect(() => {
@@ -40,6 +39,12 @@ const Shop = () => {
     return <div className="error">Error: error fetching</div>;
   }
 
+  let productsToShow = [];
+  if (categoryName) {
+    productsToShow = getProductsByCategoryName(categoryName);
+  } else {
+    productsToShow = getAllProducts();
+  }
   return (
     <Flex
       data-testid="shop"
@@ -48,7 +53,7 @@ const Shop = () => {
       align="center"
       gap="lg"
     >
-      {allProducts.map((product) => (
+      {productsToShow.map((product) => (
         <ProductCard key={product.id} product={product} data-testid="product" />
       ))}
     </Flex>

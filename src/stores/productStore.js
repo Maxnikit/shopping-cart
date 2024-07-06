@@ -6,15 +6,11 @@ export const useStore = create((set) => ({
   removeAllProducts: () => set({ products: 0 }),
   updateProducts: (newProducts) => set({ products: newProducts }),
 
-  //   getAllCategories: () => {
-  //     if (!useStore.getState().products) return [];
-  //     return [
-  //       "All",
-  //       ...new Set(
-  //         useStore.getState().products.map((product) => product.category)
-  //       ),
-  //     ];
-  //   },
+  getAllProducts: () => {
+    const { products } = useStore.getState();
+    if (!products) return [];
+    return products;
+  },
 
   getAllCategories: () => {
     const { products } = useStore.getState();
@@ -46,6 +42,9 @@ export const useStore = create((set) => ({
   },
   getProductsByCategoryName: (categoryName) => {
     const { products } = useStore.getState();
+    if (!products) return [];
+    console.log(categoryName);
+    console.log(products);
     return products.filter((product) => product.category === categoryName);
   },
 }));

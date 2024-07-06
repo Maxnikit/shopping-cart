@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function getAllProducts() {
+export function fetchAllProducts() {
   return axios.get("https://fakestoreapi.com/products").then((res) => res.data);
 }
 

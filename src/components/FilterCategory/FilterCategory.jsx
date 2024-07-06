@@ -1,13 +1,9 @@
-import { Button, Radio, Text } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Radio, Text } from "@mantine/core";
 
 export function FilterCategory({ categoryName, productCount }) {
   const labelText = `${
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1)
   }`;
-  const itemCount = () => {
-    return <Text fs="italic">products.length</Text>;
-  };
 
   return (
     <Radio

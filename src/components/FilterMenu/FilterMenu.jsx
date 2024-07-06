@@ -1,41 +1,19 @@
-import { useQuery } from "@tanstack/react-query";
-import { Button, Stack, Title, Radio, Autocomplete } from "@mantine/core";
+import { Stack, Title, Radio, Autocomplete } from "@mantine/core";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
-import {
-  // getAllCategories,
-  getAllCategoriesWithInfo,
-  getAllProducts,
-  getInCategory,
-} from "../../api/getProducts";
 import { useStore } from "../../stores/productStore";
 
-export function FilterMenu({ categoryName }) {
+export function FilterMenu() {
   const { getAllCategories } = useStore();
-  console.log(getAllCategories());
   const categories = getAllCategories();
-  // console.log(categoryName);
+  const { categoryName } = useParams();
+  console.log(categoryName);
   const navigate = useNavigate();
   const [value, setValue] = useState(categoryName);
-  const {
-    data: allCategoriesWithInfo,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["allCategoriesWithInfo"],
-    queryFn: () => getAllCategoriesWithInfo(),
-  });
-
-  if (isLoading) {
-    return <>Getting categories PLACEHOLDER</>;
+  if (value === undefined) {
+    setValue("All");
   }
-
-  // to handle error
-  if (error) {
-    return <div className="error">Error: cant get all categories</div>;
-  }
-
   function changeCategory(category) {
     if (category === "All") {
       navigate("/");
