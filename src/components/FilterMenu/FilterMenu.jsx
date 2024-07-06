@@ -9,7 +9,7 @@ export function FilterMenu() {
   const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
   const { categoryName } = useParams();
-  console.log(categoryName);
+
   const navigate = useNavigate();
   const [value, setValue] = useState(categoryName);
   if (value === undefined) {

@@ -89,31 +89,29 @@ const ProductPageComponent = ({ product }) => {
   const count = cartItems.find((item) => item.id === product.id)?.count || 0;
   const { id, title, price, description, category, image, rating } = product;
   return (
-    <Paper shadow="sm" radius="md" p="md">
-      <Group
-        data-testid={`productPage-${id}`}
-        p="md"
-        justify="center"
-        align="start"
-        radius="lg"
-        shadow="sm"
-        gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
-      >
-        <Image w={500} mah={500} fit="contain" src={image} alt={title} />
+    <Group
+      data-testid={`productPage-${id}`}
+      p="md"
+      justify="center"
+      align="start"
+      radius="lg"
+      shadow="sm"
+      gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
+    >
+      <Image w={500} mah={500} fit="contain" src={image} alt={title} />
 
-        <Stack w={500}>
-          <Title order={2}>{title}</Title>
-          {/* TODO make Badge clickable and redirect to category */}
-          <Badge>{category}</Badge>
-          <ProductRating rating={rating} />
-          <Text>{description}</Text>
-          <Group align="center">
-            <Text>{price}$</Text>
-            {buyButton()}
-          </Group>
-        </Stack>
-      </Group>
-    </Paper>
+      <Stack w={500}>
+        <Title order={2}>{title}</Title>
+        {/* TODO make Badge clickable and redirect to category */}
+        <Badge>{category}</Badge>
+        <ProductRating rating={rating} />
+        <Text>{description}</Text>
+        <Group align="center">
+          <Text>{price}$</Text>
+          {buyButton()}
+        </Group>
+      </Stack>
+    </Group>
   );
 };
 

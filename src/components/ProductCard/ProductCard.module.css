@@ -45,8 +45,8 @@
 /* Huge desktop */
 @media (min-width: $mantine-breakpoint-lg) {
   .card {
-    width: calc(
-      20% - 20px
+    min-width: calc(
+      25% - 20px
     ); /* Adjust width for 4-column layout, considering some margin */
   }
 }
