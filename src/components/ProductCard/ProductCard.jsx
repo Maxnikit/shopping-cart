@@ -12,6 +12,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import style from "./ProductCard.module.css";
 import { useCartStore } from "../../stores/cartStore";
+import { IconStar, IconStarFilled } from "@tabler/icons-react";
 
 const ProductCard = ({ product }) => {
   const { id, title, price, image, rating = { rate: 0, count: 0 } } = product;
@@ -53,9 +54,12 @@ const ProductCard = ({ product }) => {
             {title}
           </Text>
         </Tooltip>
-        <Group>
-          <Rating defaultValue={rating.rate} readOnly />
-          <Text>{rating.count} reviews</Text>
+        <Group gap={5}>
+          <Group gap={0}>
+            <IconStarFilled color="gold" />
+            <Text>{rating.rate}</Text>
+          </Group>
+          <Text c="dimmed">| {rating.count} reviews</Text>
         </Group>
         {isProductInCart ? (
           <Button
