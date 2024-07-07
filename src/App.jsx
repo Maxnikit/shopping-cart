@@ -10,8 +10,7 @@ import ScrollToTop from "./utils/scrollToTop";
 import { BottomNavigation } from "./components/BottomNavigation/BottomNavigation";
 
 function App() {
-  // TODO choose more correct query
-  const isMobile = useMediaQuery(`(max-width: ${em(750)})`);
+  const isMobile = useMediaQuery(`(max-width: ${em(768)})`);
 
   // TODO Improve error messages
   // TODO improve cart empty message
