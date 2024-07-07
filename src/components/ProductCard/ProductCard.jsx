@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
     <Card
       data-testid="product"
       shadow="sm"
-      padding="lg"
+      padding="sm"
       radius="md"
       withBorder
       key={product.id}

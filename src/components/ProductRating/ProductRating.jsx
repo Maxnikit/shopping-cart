@@ -3,12 +3,14 @@ import { IconStarFilled } from "@tabler/icons-react";
 
 export function ProductRating({ rating }) {
   return (
-    <Group gap={5}>
+    <Group gap={4}>
       <Group gap={0}>
         <IconStarFilled color="gold" />
         <Text>{rating.rate}</Text>
       </Group>
-      <Text c="dimmed">| {rating.count} reviews</Text>
+      <Text c="dimmed" size="sm">
+        | {rating.count} reviews
+      </Text>
     </Group>
   );
 }
