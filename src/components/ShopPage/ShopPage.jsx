@@ -1,4 +1,4 @@
-import { Drawer, Flex, Stack } from "@mantine/core";
+import { Drawer, Flex, Stack, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { FilterMenu } from "../FilterMenu/FilterMenu";
 import Shop from "../Shop/Shop";
@@ -13,7 +13,11 @@ export function ShopPage() {
       {!isMobile() ? (
         <FilterMenu />
       ) : (
-        <Drawer opened={opened} onClose={close} title="Filter Drawer">
+        <Drawer
+          opened={opened}
+          onClose={close}
+          title={<Title order={3}>Filters</Title>}
+        >
           <FilterMenu />
         </Drawer>
       )}
