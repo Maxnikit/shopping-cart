@@ -13,8 +13,7 @@ function App() {
   const isMobile = useMediaQuery(`(max-width: ${em(768)})`);
 
   // TODO Improve error messages
-  // TODO add searchbar
-  // TODO add filters by category, price, name and etc.
+  // TODO add filters by price and rating
   // TODO add credit card info for checkout and adress
 
   return (
