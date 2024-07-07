@@ -13,13 +13,20 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
+        path: "/shop",
         element: <ShopPage />,
+        children: [
+          {
+            path: ":categoryName",
+            element: <ShopPage />,
+          },
+          {
+            path: ":categoryName/search/:query",
+            element: <ShopPage />,
+          },
+        ],
       },
-      {
-        path: "/category/:categoryName",
-        element: <ShopPage />,
-      },
+
       {
         path: "/cart",
         element: <Cart />,
@@ -36,7 +43,7 @@ const routes = [
   },
   {
     path: "*",
-    element: <Navigate to="/" />,
+    element: <Navigate to="/shop" />,
   },
 ];
 

@@ -91,18 +91,18 @@ ProductCard.propTypes = {
   }),
 };
 
-ProductCard.defaultProps = {
-  product: {
-    id: 0,
-    title: "",
-    price: 0,
-    description: "",
-    category: "",
-    image: "",
-    rating: {
-      rate: 0,
-      count: 0,
-    },
-  },
-};
+// ProductCard.defaultProps = {
+//   product: {
+//     id: 0,
+//     title: "",
+//     price: 0,
+//     description: "",
+//     category: "",
+//     image: "",
+//     rating: {
+//       rate: 0,
+//       count: 0,
+//     },
+//   },
+// };
 export default ProductCard;

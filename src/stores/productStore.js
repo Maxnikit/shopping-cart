@@ -12,6 +12,12 @@ export const useProductStore = create((set) => ({
     return products;
   },
 
+  getProductByName: (productName) => {
+    const { products } = useProductStore.getState();
+    if (!products) return [];
+    return products.find((product) => product.title === productName);
+  },
+
   getAllCategories: () => {
     const { products } = useProductStore.getState();
     if (!products) return [{ categoryName: "All", productCount: 0 }];

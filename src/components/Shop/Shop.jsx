@@ -9,7 +9,7 @@ import { fetchAllProducts } from "../../api/getProducts";
 import { useProductStore } from "../../stores/productStore";
 
 const Shop = () => {
-  const { categoryName } = useParams();
+  const { categoryName, query } = useParams();
   const { updateProducts, getAllProducts, getProductsByCategoryName } =
     useProductStore();
   const {
@@ -46,7 +46,13 @@ const Shop = () => {
   } else {
     productsToShow = getAllProducts();
   }
-
+  console.log(productsToShow);
+  if (query) {
+    console.log(query);
+    productsToShow = productsToShow.filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
+  }
   return (
     <motion.div
       key={categoryName}

@@ -4,7 +4,7 @@ import { IconHome2 } from "@tabler/icons-react";
 import { CartIcon } from "../CartIcon/CartIcon";
 
 const links = [
-  { link: "/", label: "Home", icon: <IconHome2 /> },
+  { link: "/shop", label: "Shop", icon: <IconHome2 /> },
   {
     link: "/cart",
     label: "Cart",

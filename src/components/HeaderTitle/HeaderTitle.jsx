@@ -5,7 +5,7 @@ import style from "./HeaderTitle.module.css";
 const HeaderTitle = () => {
   return (
     <div data-testid="appHeader" className="header">
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/shop" style={{ textDecoration: "none" }}>
         <Title flex={1} order={1} c="black" className={style.title}>
           Totally not a{" "}
           <Text

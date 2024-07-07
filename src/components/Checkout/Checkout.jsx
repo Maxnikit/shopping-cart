@@ -10,10 +10,10 @@ const Checkout = () => {
         <IconCheck width="100%" height={200} color="#AE3EC9" />
         <Text>
           Your items will come soon. Meanwhile, you can look at what else we
-          have at the home page!
+          have at the shop page!
         </Text>
-        <Button size="md" component={Link} to="/">
-          Home page
+        <Button size="md" component={Link} to="/shop">
+          Shop page
         </Button>
       </Stack>
     </Card>
