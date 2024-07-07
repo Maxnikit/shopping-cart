@@ -41,7 +41,7 @@ const Shop = () => {
     return <div className="error">Error: error fetching</div>;
   }
   let productsToShow = [];
-  if (categoryName) {
+  if (categoryName && categoryName !== "all") {
     productsToShow = getProductsByCategoryName(categoryName);
   } else {
     productsToShow = getAllProducts();

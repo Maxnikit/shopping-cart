@@ -20,7 +20,7 @@ export const useProductStore = create((set) => ({
 
   getAllCategories: () => {
     const { products } = useProductStore.getState();
-    if (!products) return [{ categoryName: "All", productCount: 0 }];
+    if (!products) return [{ categoryName: "all", productCount: 0 }];
 
     // Initialize an object to count products per category
     const categoryCounts = products.reduce((acc, product) => {
@@ -40,9 +40,9 @@ export const useProductStore = create((set) => ({
       })
     );
 
-    // Include the "All" category with the total product count
+    // Include the "all" category with the total product count
     return [
-      { categoryName: "All", productCount: totalProducts },
+      { categoryName: "all", productCount: totalProducts },
       ...categoriesWithCounts,
     ];
   },

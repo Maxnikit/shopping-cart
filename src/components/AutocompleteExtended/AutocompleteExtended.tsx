@@ -19,15 +19,13 @@ const AutocompleteExtended: React.FC<AutocompleteExtendedProps> = ({
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
-      const newValue: string | null =
-        event.currentTarget.value.length === 0
-          ? null
-          : event.currentTarget.value;
-      checkOption(newValue);
-    }
+      // Directly assign the value without checking for length
+      const newValue: string = event.currentTarget.value;
+      checkOption(newValue); // This will now also work with empty strings
 
-    // handle original onKeyDown event
-    props.onKeyDown && props.onKeyDown(event);
+      // handle original onKeyDown event
+      props.onKeyDown && props.onKeyDown(event);
+    }
   };
 
   const checkOption = (newValue: string | null) => {

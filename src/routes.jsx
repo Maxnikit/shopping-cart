@@ -13,15 +13,15 @@ const routes = [
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/shop",
+        path: "shop",
         element: <ShopPage />,
         children: [
           {
-            path: ":categoryName",
+            path: "category/:categoryName",
             element: <ShopPage />,
           },
           {
-            path: ":categoryName/search/:query",
+            path: "category/:categoryName/search?/:query?",
             element: <ShopPage />,
           },
         ],
@@ -41,10 +41,10 @@ const routes = [
       },
     ],
   },
-  {
-    path: "*",
-    element: <Navigate to="/shop" />,
-  },
+  // {
+  //   path: "*",
+  //   element: <Navigate to="/shop" />,
+  // },
 ];
 
 export default routes;

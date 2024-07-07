@@ -8,23 +8,28 @@ import { SearchBar } from "../SearchBar/SearchBar";
 export function FilterMenu({ sticky }) {
   const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
-  const { categoryName } = useParams();
+  const { categoryName, query } = useParams();
 
   const navigate = useNavigate();
   const [value, setValue] = useState(categoryName);
   if (value === undefined) {
-    setValue("All");
+    setValue("all");
   }
   function changeCategory(category) {
-    if (category === "All") {
-      navigate("/");
+    let url;
+    if (category === "all") {
+      url = "/shop/category/all";
       setValue(category);
-      return;
+    } else {
+      url = `/shop/category/${category}`;
+      setValue(category);
     }
-    setValue(category);
-    navigate(`/category/${category}`);
+    if (query) {
+      url += `/search/${query}`;
+    }
+    navigate(url);
   }
-
+  console.log(categories);
   return (
     <Paper miw={300} pos={sticky ? "sticky" : "static"} top={sticky ? 80 : 0}>
       <Stack>
