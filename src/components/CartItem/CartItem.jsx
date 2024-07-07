@@ -55,7 +55,13 @@ const CartItem = ({ product }) => {
             >
               {product.title}
             </Text>
-            <Badge>{product.category}</Badge>
+            <Badge
+              style={{ cursor: "pointer" }}
+              component={Link}
+              to={`/category/${product.category}`}
+            >
+              {product.category}
+            </Badge>
           </Stack>
         </Group>
 
