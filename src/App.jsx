@@ -17,6 +17,7 @@ function App() {
   // TODO add searchbar
   // TODO add filters by category, price, name and etc.
   // TODO add credit card info for checkout and adress
+  // TODO refreshing page switches category to ALL
 
   return (
     <AppShell
