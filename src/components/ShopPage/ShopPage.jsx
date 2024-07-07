@@ -11,7 +11,7 @@ export function ShopPage() {
   return (
     <Flex align="start" justify="start" gap="lg">
       {!isMobile() ? (
-        <FilterMenu fixed />
+        <FilterMenu sticky />
       ) : (
         <Drawer
           opened={opened}
