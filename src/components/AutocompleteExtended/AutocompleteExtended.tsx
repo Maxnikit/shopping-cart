@@ -1,10 +1,11 @@
 import { AutocompleteProps, Autocomplete } from "@mantine/core";
 
 interface AutocompleteExtendedProps extends AutocompleteProps {
-  onNovelOptionSubmit?: (value: string) => void;
+  customOnNovelOptionSubmit?: (value: string) => void;
 }
 
 const AutocompleteExtended: React.FC<AutocompleteExtendedProps> = ({
+  customOnNovelOptionSubmit,
   ...props
 }) => {
   const handleBlur = (event: React.FocusEvent<HTMLInputElement>) => {
@@ -25,12 +26,15 @@ const AutocompleteExtended: React.FC<AutocompleteExtendedProps> = ({
 
       // handle original onKeyDown event
       props.onKeyDown && props.onKeyDown(event);
+      if (customOnNovelOptionSubmit) {
+        customOnNovelOptionSubmit(newValue);
+      }
     }
   };
 
   const checkOption = (newValue: string | null) => {
     if (newValue !== null && !props.data?.includes(newValue)) {
-      props.onNovelOptionSubmit?.(newValue);
+      props.customOnNovelOptionSubmit?.(newValue);
     }
   };
 

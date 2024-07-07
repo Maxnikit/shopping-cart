@@ -33,7 +33,7 @@ export function SearchBar() {
       value={value}
       onChange={setValue}
       onOptionSubmit={onOptionSelect}
-      onNovelOptionSubmit={onOptionSubmit}
+      customOnNovelOptionSubmit={onOptionSubmit}
     />
   );
 }
