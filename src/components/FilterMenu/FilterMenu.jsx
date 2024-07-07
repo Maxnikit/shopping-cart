@@ -8,11 +8,10 @@ import { SearchBar } from "../SearchBar/SearchBar";
 export function FilterMenu() {
   const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
-  const { currentCategory } = useParams();
+  const { categoryName } = useParams();
 
   const navigate = useNavigate();
-  const [value, setValue] = useState(currentCategory);
-  console.log(value);
+  const [value, setValue] = useState(categoryName);
   if (value === undefined) {
     setValue("All");
   }
