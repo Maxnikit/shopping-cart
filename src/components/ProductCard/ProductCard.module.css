@@ -9,9 +9,8 @@
 /* Styling for the product image section */
 .productImage {
   width: 100%; /* Image takes full width of the card */
-  height: 200px; /* Fixed height for consistency */
+  height: 300px; /* Fixed height for consistency */
   object-fit: contain; /* Ensure images cover the area well without distortion */
-  padding: 10px;
 }
 
 .productImage:hover {
@@ -20,33 +19,27 @@
 
 /* Base style MOBILE FIRST */
 .card {
-  height: 100%; /* Ensure all cards have the same height */
+  height: 100%;
   width: calc(50% - 10px);
 }
 
 /* Tablet */
 @media (min-width: $mantine-breakpoint-sm) {
   .card {
-    width: calc(
-      25% - 20px
-    ); /* Adjust width for 2-column layout, considering some margin */
+    width: calc(30% - 20px);
   }
 }
 
 /* Desktop */
 @media (min-width: $mantine-breakpoint-md) {
   .card {
-    width: calc(
-      20% - 20px
-    ); /* Adjust width for 3-column layout, considering some margin */
+    width: calc(25% - 20px);
   }
 }
 
 /* Huge desktop */
 @media (min-width: $mantine-breakpoint-lg) {
   .card {
-    min-width: calc(
-      25% - 20px
-    ); /* Adjust width for 4-column layout, considering some margin */
+    min-width: calc(20% - 20px);
   }
 }

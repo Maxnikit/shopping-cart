@@ -89,9 +89,6 @@ ProductCard.propTypes = {
       count: PropTypes.number,
     }),
   }),
-  // handleAddToCart: PropTypes.func.isRequired,
-  // handleRemoveFromCart: PropTypes.func.isRequired,
-  // isInCart: PropTypes.bool.isRequired,
 };
 
 ProductCard.defaultProps = {

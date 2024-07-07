@@ -17,7 +17,7 @@ export function ShopPage() {
           <FilterMenu />
         </Drawer>
       )}
-      <Stack>
+      <Stack w="100%">
         {isMobile() ? <MobileFilterBar openDrawer={open} /> : undefined}
         <Shop />
       </Stack>

@@ -12,6 +12,7 @@ export function FilterMenu() {
 
   const navigate = useNavigate();
   const [value, setValue] = useState(currentCategory);
+  console.log(value);
   if (value === undefined) {
     setValue("All");
   }

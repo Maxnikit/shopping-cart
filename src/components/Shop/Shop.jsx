@@ -1,4 +1,4 @@
-import { Flex } from "@mantine/core";
+import { Container, Flex, Group } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -27,11 +27,12 @@ const Shop = () => {
 
   if (isLoading) {
     return (
-      <Flex wrap="wrap" justify="center" align="center" gap="lg">
-        {Array.from({ length: 10 }).map((_, index) => (
-          <ProductCardSkeleton key={index} />
-        ))}
-      </Flex>
+      <Group gap="lg">
+        <ProductCardSkeleton />
+        <ProductCardSkeleton />
+        <ProductCardSkeleton />
+        <ProductCardSkeleton />
+      </Group>
     );
   }
 
@@ -53,13 +54,7 @@ const Shop = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
     >
-      <Flex
-        data-testid="shop"
-        wrap="wrap"
-        justify="start"
-        align="start"
-        gap="lg"
-      >
+      <Group wrap="wrap" justify="start" align="start" gap="lg">
         {productsToShow.map((product) => (
           <ProductCard
             key={product.id}
@@ -67,7 +62,7 @@ const Shop = () => {
             data-testid="product"
           />
         ))}
-      </Flex>{" "}
+      </Group>
     </motion.div>
   );
 };

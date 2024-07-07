@@ -5,18 +5,18 @@ const ProductCardSkeleton = () => {
   return (
     <Card
       shadow="sm"
-      padding="lg"
+      padding="sm"
       radius="md"
       withBorder
       className={style.card}
     >
       <Flex direction="column">
-        <Skeleton height={200} circle={false} className={style.productImage} />
-        <Skeleton height={8} mt={10} width="80%" />
-        <Skeleton height={8} mt={10} width="60%" />
-        <Group position="apart" mt={10}>
-          <Skeleton height={20} width="30%" />
-          <Skeleton height={20} width="20%" />
+        <Skeleton circle={false} className={style.productImage} />
+        <Skeleton height={20} mt={5} width={40} />
+        <Skeleton height={8} mt={5} width="80%" />
+        <Group position="apart" mt={5}>
+          <Skeleton height={20} width={40} />
+          <Skeleton height={20} width={60} />
         </Group>
         <Skeleton height={36} mt={10} />
       </Flex>
