@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useProductStore } from "../../stores/productStore";
 import AutocompleteExtended from "../AutocompleteExtended/AutocompleteExtended";
 import { useNavigate, useParams } from "react-router-dom";
+import { IconSearch } from "@tabler/icons-react";
 
 export function SearchBar() {
   const navigate = useNavigate();
@@ -24,6 +25,8 @@ export function SearchBar() {
   }
   return (
     <AutocompleteExtended
+      placeholder="Cotton Jacket"
+      rightSection={<IconSearch stroke={1} />}
       limit={5}
       label="Search"
       data={productNames}

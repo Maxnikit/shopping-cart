@@ -46,9 +46,8 @@ const Shop = () => {
   } else {
     productsToShow = getAllProducts();
   }
-  console.log(productsToShow);
+
   if (query) {
-    console.log(query);
     productsToShow = productsToShow.filter((product) =>
       product.title.toLowerCase().includes(query.toLowerCase())
     );

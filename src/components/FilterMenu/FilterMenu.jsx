@@ -17,10 +17,7 @@ export function FilterMenu({ sticky }) {
   }
   function changeCategory(category) {
     let url;
-    if (category === "all") {
-      url = "/shop/category/all";
-      setValue(category);
-    } else {
+    if (category) {
       url = `/shop/category/${category}`;
       setValue(category);
     }
