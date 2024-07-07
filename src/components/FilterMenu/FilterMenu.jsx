@@ -5,7 +5,7 @@ import { FilterCategory } from "../FilterCategory/FilterCategory";
 import { useProductStore } from "../../stores/productStore";
 import { SearchBar } from "../SearchBar/SearchBar";
 
-export function FilterMenu() {
+export function FilterMenu({ fixed }) {
   const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
   const { categoryName } = useParams();
@@ -24,9 +24,10 @@ export function FilterMenu() {
     setValue(category);
     navigate(`/category/${category}`);
   }
-
+  console.log(fixed);
+  // TODO deal with fixed position for filter menu on desktop. Current variant is not working
   return (
-    <Paper miw={300}>
+    <Paper miw={300} pos={fixed ? "fixed" : "block"}>
       <Stack>
         <Radio.Group
           value={value}
