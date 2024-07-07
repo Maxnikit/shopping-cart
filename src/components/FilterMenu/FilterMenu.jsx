@@ -1,9 +1,10 @@
-import { Stack, Radio, Paper } from "@mantine/core";
+import { Stack, Radio, Paper, Button, Chip } from "@mantine/core";
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
 import { useProductStore } from "../../stores/productStore";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { IconX } from "@tabler/icons-react";
 
 export function FilterMenu({ sticky }) {
   const { getAllCategories } = useProductStore();
@@ -26,7 +27,6 @@ export function FilterMenu({ sticky }) {
     }
     navigate(url);
   }
-  console.log(categories);
   return (
     <Paper miw={300} pos={sticky ? "sticky" : "static"} top={sticky ? 80 : 0}>
       <Stack>
@@ -47,6 +47,20 @@ export function FilterMenu({ sticky }) {
           </Stack>
         </Radio.Group>
         <SearchBar />
+        {query ? (
+          <Chip
+            onClick={() => navigate(`/shop/category/${value}`)}
+            defaultChecked
+            variant="filled"
+            c="grape"
+            icon={<IconX />}
+          >
+            {query}
+          </Chip>
+        ) : null}
+        <Button component={Link} to={`/shop/category/${value}`}>
+          Clear{" "}
+        </Button>
       </Stack>
     </Paper>
   );

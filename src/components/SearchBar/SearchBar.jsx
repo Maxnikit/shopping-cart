@@ -4,10 +4,12 @@ import { useProductStore } from "../../stores/productStore";
 import AutocompleteExtended from "../AutocompleteExtended/AutocompleteExtended";
 import { useNavigate, useParams } from "react-router-dom";
 import { IconSearch } from "@tabler/icons-react";
+import { useDisclosure } from "@mantine/hooks";
 
 export function SearchBar() {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
+  const [dropdownOpened, { toggle, close, open }] = useDisclosure();
   const { getArrayOfProductNames, getProductByName } = useProductStore();
   const productNames = getArrayOfProductNames();
   let { categoryName } = useParams();
@@ -22,11 +24,16 @@ export function SearchBar() {
 
   function onOptionSubmit(query) {
     navigate(`category/${categoryName}/search/${query}`);
+    close();
+    setValue("");
   }
+  console.log(dropdownOpened);
   return (
     <AutocompleteExtended
       placeholder="Cotton Jacket"
-      rightSection={<IconSearch stroke={1} />}
+      rightSection={
+        <IconSearch onClick={() => onOptionSubmit(value)} stroke={1} />
+      }
       limit={5}
       label="Search"
       data={productNames}
@@ -34,6 +41,9 @@ export function SearchBar() {
       onChange={setValue}
       onOptionSubmit={onOptionSelect}
       customOnNovelOptionSubmit={onOptionSubmit}
+      onClick={() => open()}
+      onBlur={() => close()}
+      dropdownOpened={dropdownOpened}
     />
   );
 }
