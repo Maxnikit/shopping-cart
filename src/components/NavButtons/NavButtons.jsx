@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { IconHome2 } from "@tabler/icons-react";
 
-import classes from "./NavButtons.module.css";
 import { CartIcon } from "../CartIcon/CartIcon";
 
 const links = [
@@ -19,7 +18,6 @@ const NavButtons = () => {
       variant="subtle"
       key={link.label}
       to={link.link}
-      className={classes.link}
       leftSection={link.icon}
     >
       {link.label}
