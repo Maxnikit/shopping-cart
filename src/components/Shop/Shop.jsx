@@ -1,12 +1,12 @@
-import { Flex, Transition } from "@mantine/core";
+import { Flex } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { motion } from "framer-motion";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
 import { useProductStore } from "../../stores/productStore";
-import { motion } from "framer-motion";
 
 const Shop = () => {
   const { categoryName } = useParams();

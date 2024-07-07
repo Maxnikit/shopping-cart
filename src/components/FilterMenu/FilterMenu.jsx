@@ -1,4 +1,4 @@
-import { Stack, Title, Radio, Autocomplete } from "@mantine/core";
+import { Stack, Radio, Paper } from "@mantine/core";
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
@@ -8,10 +8,10 @@ import { SearchBar } from "../SearchBar/SearchBar";
 export function FilterMenu() {
   const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
-  const { categoryName } = useParams();
+  const { currentCategory } = useParams();
 
   const navigate = useNavigate();
-  const [value, setValue] = useState(categoryName);
+  const [value, setValue] = useState(currentCategory);
   if (value === undefined) {
     setValue("All");
   }
@@ -26,25 +26,26 @@ export function FilterMenu() {
   }
 
   return (
-    <Stack miw="15%">
-      {/* <Title order={2}>Filters</Title> */}
-      <Radio.Group
-        value={value}
-        onChange={changeCategory}
-        name="category"
-        label="Select category"
-      >
-        <Stack mt={10}>
-          {categories.map(({ categoryName, productCount }) => (
-            <FilterCategory
-              key={categoryName}
-              categoryName={categoryName}
-              productCount={productCount}
-            />
-          ))}
-        </Stack>
-      </Radio.Group>
-      <SearchBar />
-    </Stack>
+    <Paper miw={300}>
+      <Stack>
+        <Radio.Group
+          value={value}
+          onChange={changeCategory}
+          name="category"
+          label="Select category"
+        >
+          <Stack mt={10}>
+            {categories.map(({ categoryName, productCount }) => (
+              <FilterCategory
+                key={categoryName}
+                categoryName={categoryName}
+                productCount={productCount}
+              />
+            ))}
+          </Stack>
+        </Radio.Group>
+        <SearchBar />
+      </Stack>
+    </Paper>
   );
 }

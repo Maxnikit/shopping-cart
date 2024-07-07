@@ -1,7 +1,7 @@
 import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-import { IconHome2, IconShoppingCart } from "@tabler/icons-react";
+import { IconHome2 } from "@tabler/icons-react";
 
 import classes from "./NavButtons.module.css";
 import { CartIcon } from "../CartIcon/CartIcon";
@@ -11,7 +11,7 @@ const links = [
   { link: "/cart", label: "Cart", icon: <CartIcon /> },
 ];
 
-const NavButtons = (burgerToggle) => {
+const NavButtons = () => {
   const items = links.map((link) => (
     <Button
       style={{ overflow: "visible" }}

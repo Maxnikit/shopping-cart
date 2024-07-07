@@ -1,16 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import {
-  Image,
-  Text,
-  Button,
-  Group,
-  Rating,
-  Title,
-  Stack,
-  Badge,
-  Paper,
-} from "@mantine/core";
+import { Image, Text, Button, Group, Title, Stack, Badge } from "@mantine/core";
 import ProductPageSkeleton from "./ProductPageSkeleton";
 import { useCartStore } from "../../stores/cartStore";
 import { getProductById } from "../../api/getProducts";

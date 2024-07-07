@@ -1,23 +1,12 @@
-import {
-  Card,
-  Image,
-  Text,
-  Button,
-  Group,
-  Flex,
-  Rating,
-  Tooltip,
-} from "@mantine/core";
+import { Card, Image, Text, Button, Flex, Tooltip } from "@mantine/core";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
 import style from "./ProductCard.module.css";
 import { useCartStore } from "../../stores/cartStore";
-import { IconStar, IconStarFilled } from "@tabler/icons-react";
 import { ProductRating } from "../ProductRating/ProductRating";
 
 const ProductCard = ({ product }) => {
-  const { id, title, price, image, rating = { rate: 0, count: 0 } } = product;
-
   const { cartItems, addToCart } = useCartStore();
 
   const isProductInCart = cartItems.some((item) => item.id === product.id);
@@ -32,17 +21,21 @@ const ProductCard = ({ product }) => {
       padding="lg"
       radius="md"
       withBorder
-      key={id}
+      key={product.id}
       className={style.card}
     >
       <Flex direction="column">
         <Card.Section component={Link} to={`/product/${product.id}`}>
-          <Image className={style.productImage} src={image} alt={title} />
+          <Image
+            className={style.productImage}
+            src={product.image}
+            alt={product.title}
+          />
         </Card.Section>
         <Text size="lg" fw={500}>
-          {price}$
+          {product.price}$
         </Text>
-        <Tooltip label={title} openDelay={500}>
+        <Tooltip label={product.title} openDelay={500}>
           <Text
             size="sm"
             component={Link}
@@ -52,7 +45,7 @@ const ProductCard = ({ product }) => {
             to={`/product/${product.id}`}
             className={style.productName}
           >
-            {title}
+            {product.title}
           </Text>
         </Tooltip>
         <ProductRating rating={product.rating} />
