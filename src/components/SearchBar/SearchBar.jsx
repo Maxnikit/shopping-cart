@@ -23,6 +23,9 @@ export function SearchBar() {
   }
 
   function onOptionSubmit(query) {
+    if (!query) {
+      return;
+    }
     navigate(`/shop/category/${categoryName}/search/${query}`);
     close();
     setValue("");
@@ -31,7 +34,11 @@ export function SearchBar() {
     <AutocompleteExtended
       placeholder="Cotton Jacket"
       rightSection={
-        <IconSearch onClick={() => onOptionSubmit(value)} stroke={1} />
+        <IconSearch
+          cursor="pointer"
+          onClick={() => onOptionSubmit(value)}
+          stroke={1}
+        />
       }
       limit={5}
       label="Search"
