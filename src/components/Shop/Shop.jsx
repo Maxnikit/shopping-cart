@@ -1,4 +1,4 @@
-import { Container, Flex, Group } from "@mantine/core";
+import { Container, Flex, Group, Title } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -52,6 +52,22 @@ const Shop = () => {
       product.title.toLowerCase().includes(query.toLowerCase())
     );
   }
+  if (productsToShow.length === 0) {
+    return (
+      <Flex
+        sx={{
+          height: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Container>
+          <Title order={2}>No products found with current filters</Title>
+        </Container>
+      </Flex>
+    );
+  }
+
   return (
     <motion.div
       key={categoryName}
