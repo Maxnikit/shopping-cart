@@ -22,7 +22,7 @@ const ProductPageSkeleton = () => {
           </Group>
           <Skeleton height={50} />
           <Group align="center">
-            <Text>0$</Text>
+            <Text size="xl">0$</Text>
             <Skeleton height={25} width={100} />
           </Group>
         </Stack>

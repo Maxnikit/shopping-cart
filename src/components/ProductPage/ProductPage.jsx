@@ -43,14 +43,18 @@ const ProductPageComponent = ({ product }) => {
     if (isProductInCart) {
       return (
         <Button.Group>
-          <Button color="red" onClick={() => handleDecrement()}>
+          <Button variant="light" color="red" onClick={() => handleDecrement()}>
             -
           </Button>
 
-          <Button component={Link} to="/cart" radius="md">
+          <Button variant="light" component={Link} to="/cart" radius="md">
             <Text size="lg">{count} </Text>
           </Button>
-          <Button color="green" onClick={() => handleIncrement()}>
+          <Button
+            variant="light"
+            color="green"
+            onClick={() => handleIncrement()}
+          >
             +
           </Button>
         </Button.Group>
@@ -88,7 +92,7 @@ const ProductPageComponent = ({ product }) => {
       shadow="sm"
       gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
     >
-      <Image w={500} mah={500} fit="contain" src={image} alt={title} />
+      <Image maw={500} mah={500} fit="contain" src={image} alt={title} />
 
       <Stack w={500}>
         <Title order={2}>{title}</Title>
@@ -102,7 +106,7 @@ const ProductPageComponent = ({ product }) => {
         <ProductRating rating={rating} />
         <Text>{description}</Text>
         <Group align="center">
-          <Text>{price}$</Text>
+          <Text size="xl">{price}$</Text>
           {buyButton()}
         </Group>
       </Stack>
