@@ -8,8 +8,8 @@
 }
 
 .productImage {
-  width: 100%;
   height: 80px; /* Fixed height for consistency */
+  width: 80px;
   object-fit: contain; /* Ensure images cover the area well without distortion */
 }
 
