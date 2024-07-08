@@ -99,7 +99,7 @@ const ProductPageComponent = ({ product }) => {
         <Badge
           style={{ cursor: "pointer" }}
           component={Link}
-          to={`/category/${category}`}
+          to={`/shop/category/${category}`}
         >
           {category}
         </Badge>
