@@ -58,9 +58,6 @@ export function FilterMenu({ sticky }) {
             {query}
           </Chip>
         ) : null}
-        <Button component={Link} to={`/shop/category/${value}`}>
-          Clear{" "}
-        </Button>
       </Stack>
     </Paper>
   );

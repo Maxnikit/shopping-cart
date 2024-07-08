@@ -9,42 +9,22 @@ import { ShopPage } from "./components/ShopPage/ShopPage";
 const routes = [
   {
     path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
+    element: <App />, // App wraps all routes as a layout
     children: [
+      { index: true, element: <Navigate to="/shop" replace /> },
+      { path: "shop", element: <ShopPage /> },
+      { path: "shop/category/:categoryName", element: <ShopPage /> },
       {
-        path: "shop",
+        path: "shop/category/:categoryName/search?/:query?",
         element: <ShopPage />,
-        children: [
-          {
-            path: "category/:categoryName",
-            element: <ShopPage />,
-          },
-          {
-            path: "category/:categoryName/search?/:query?",
-            element: <ShopPage />,
-          },
-        ],
       },
-
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-      {
-        path: "checkout",
-        element: <Checkout />,
-      },
-      {
-        path: "/product/:id",
-        element: <ProductPage />,
-      },
+      { path: "product/:id", element: <ProductPage /> },
+      { path: "cart", element: <Cart /> },
+      { path: "checkout", element: <Checkout /> },
+      // Other routes can be added here
     ],
   },
-  // {
-  //   path: "*",
-  //   element: <Navigate to="/shop" />,
-  // },
+  // If you have paths that should render ErrorPage or other components outside of App's layout, you can add them here
 ];
 
 export default routes;

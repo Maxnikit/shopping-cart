@@ -23,11 +23,10 @@ export function SearchBar() {
   }
 
   function onOptionSubmit(query) {
-    navigate(`category/${categoryName}/search/${query}`);
+    navigate(`/shop/category/${categoryName}/search/${query}`);
     close();
     setValue("");
   }
-  console.log(dropdownOpened);
   return (
     <AutocompleteExtended
       placeholder="Cotton Jacket"
