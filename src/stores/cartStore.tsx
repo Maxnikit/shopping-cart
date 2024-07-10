@@ -1,11 +1,22 @@
+import { CartItem, Product } from "types";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export const useCartStore = create(
+interface CartState {
+  cartItems: CartItem[] | [];
+  addToCart: (item: Product) => void;
+  removeFromCart: (itemId: number) => void;
+  incrementItemCount: (itemId: number) => void;
+  decrementItemCount: (itemId: number) => void;
+  clearCart: () => void;
+  getTotalItemCount: () => number;
+  getTotalItemPrice: () => number;
+}
+export const useCartStore = create<CartState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       cartItems: [],
-      addToCart: (item) =>
+      addToCart: (item) => {
         set((state) => {
           const existingItem = state.cartItems.find((i) => i.id === item.id);
           if (existingItem) {
@@ -19,7 +30,9 @@ export const useCartStore = create(
             // Item is new, add it
             return { cartItems: [...state.cartItems, { ...item, count: 1 }] };
           }
-        }),
+        });
+      },
+
       removeFromCart: (itemId) =>
         set((state) => ({
           cartItems: state.cartItems.filter((item) => item.id !== itemId),
@@ -40,7 +53,7 @@ export const useCartStore = create(
         })),
       clearCart: () => set({ cartItems: [] }),
       getTotalItemPrice: () => {
-        const { cartItems } = useCartStore.getState();
+        const { cartItems } = get();
         return cartItems.reduce(
           (acc, item) => acc + item.price * item.count,
           0
@@ -48,7 +61,7 @@ export const useCartStore = create(
       },
 
       getTotalItemCount: () => {
-        const { cartItems } = useCartStore.getState();
+        const { cartItems } = get();
         return cartItems.reduce((acc, item) => acc + item.count, 0);
       },
     }),

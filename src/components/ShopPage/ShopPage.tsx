@@ -18,7 +18,7 @@ export function ShopPage() {
           onClose={close}
           title={<Title order={3}>Filters</Title>}
         >
-          <FilterMenu />
+          <FilterMenu sticky={false} />
         </Drawer>
       )}
       <Stack w="100%">

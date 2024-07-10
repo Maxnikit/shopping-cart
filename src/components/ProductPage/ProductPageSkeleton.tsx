@@ -3,14 +3,7 @@ import { Paper, Group, Stack, Skeleton, Rating, Text } from "@mantine/core";
 const ProductPageSkeleton = () => {
   return (
     <Paper shadow="sm" radius="md" p="md">
-      <Group
-        p="md"
-        justify="center"
-        align="start"
-        radius="lg"
-        shadow="sm"
-        gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
-      >
+      <Group p="md" justify="center" align="start">
         <Skeleton w={500} h={300} />
 
         <Stack w={500}>

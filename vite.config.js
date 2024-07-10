@@ -9,4 +9,13 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./vitest.setup.mjs",
   },
+  resolve: {
+    alias: [
+      { find: "@assets", replacement: "/src/assets" },
+      { find: "@components", replacement: "/src/components" },
+      { find: "@stores", replacement: "/src/stores" },
+      { find: "@types", replacement: "/src/types" },
+    ],
+    extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".module.css"],
+  },
 });

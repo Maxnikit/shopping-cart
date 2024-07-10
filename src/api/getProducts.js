@@ -1,7 +1,14 @@
 import axios from "axios";
 
-export function fetchAllProducts() {
-  return axios.get("https://fakestoreapi.com/products").then((res) => res.data);
+export async function fetchAllProducts() {
+  try {
+    const response = await axios.get("https://fakestoreapi.com/products");
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch products:", error);
+    // Depending on your use case, you might want to rethrow the error, return a default value, or handle it differently.
+    throw error;
+  }
 }
 
 export function getProductById(id) {

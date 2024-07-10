@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Image, Text, Button, Group, Title, Stack, Badge } from "@mantine/core";
+import { Product } from "@customTypes/index";
 import ProductPageSkeleton from "./ProductPageSkeleton";
 import { useCartStore } from "../../stores/cartStore";
 import { getProductById } from "../../api/getProducts";
@@ -28,7 +29,7 @@ const ProductPage = () => {
   return <ProductPageComponent product={product} />;
 };
 
-const ProductPageComponent = ({ product }) => {
+const ProductPageComponent = ({ product }: { product: Product }) => {
   const {
     cartItems,
     addToCart,
@@ -88,9 +89,6 @@ const ProductPageComponent = ({ product }) => {
       p="md"
       justify="center"
       align="start"
-      radius="lg"
-      shadow="sm"
-      gap={{ base: 5, xs: "md", md: "xl", xl: 50 }}
     >
       <Image maw={500} mah={500} fit="contain" src={image} alt={title} />
 

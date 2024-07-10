@@ -1,12 +1,12 @@
-import { Stack, Radio, Paper, Button, Chip } from "@mantine/core";
+import { Stack, Radio, Paper, Chip } from "@mantine/core";
 import { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { IconX } from "@tabler/icons-react";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
 import { useProductStore } from "../../stores/productStore";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { IconX } from "@tabler/icons-react";
 
-export function FilterMenu({ sticky }) {
+export function FilterMenu({ sticky }: { sticky: boolean }) {
   const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
   const { categoryName, query } = useParams();
@@ -16,8 +16,8 @@ export function FilterMenu({ sticky }) {
   if (value === undefined) {
     setValue("all");
   }
-  function changeCategory(category) {
-    let url;
+  function changeCategory(category: string) {
+    let url = "";
     if (category) {
       url = `/shop/category/${category}`;
       setValue(category);
@@ -37,10 +37,10 @@ export function FilterMenu({ sticky }) {
           label="Select category"
         >
           <Stack mt={10}>
-            {categories.map(({ categoryName, productCount }) => (
+            {categories.map(({ categoryName: catName, productCount }) => (
               <FilterCategory
-                key={categoryName}
-                categoryName={categoryName}
+                key={catName}
+                categoryName={catName}
                 productCount={productCount}
               />
             ))}

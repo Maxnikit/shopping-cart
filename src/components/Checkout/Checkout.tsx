@@ -4,7 +4,7 @@ import { IconCheck } from "@tabler/icons-react";
 
 const Checkout = () => {
   return (
-    <Card withBorder maw={500} p="lg" m="auto" align="center">
+    <Card withBorder maw={500} p="lg" m="auto" ta="center">
       <Stack align="center">
         <Title>Thanks for your order!</Title>
         <IconCheck width="100%" height={200} color="#AE3EC9" />

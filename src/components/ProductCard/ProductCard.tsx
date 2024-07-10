@@ -2,11 +2,12 @@ import { Card, Image, Text, Button, Flex, Tooltip } from "@mantine/core";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-import style from "./ProductCard.module.css";
+import { Product } from "@customTypes/index";
+import style from "@components/ProductCard/ProductCard.module.css";
 import { useCartStore } from "../../stores/cartStore";
 import { ProductRating } from "../ProductRating/ProductRating";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product }: { product: Product }) => {
   const { cartItems, addToCart } = useCartStore();
 
   const isProductInCart = cartItems.some((item) => item.id === product.id);
@@ -57,17 +58,11 @@ const ProductCard = ({ product }) => {
             color="green"
             fullWidth
             to="/cart"
-            className={style.inCartButton}
           >
             In cart
           </Button>
         ) : (
-          <Button
-            mt={10}
-            radius="md"
-            onClick={handleAddToCart}
-            className={style.addToCartButton}
-          >
+          <Button mt={10} radius="md" onClick={handleAddToCart}>
             Add to Cart
           </Button>
         )}

@@ -32,7 +32,7 @@ export function BottomNavigation() {
       defaultValue="/"
       inverted
       value={location.pathname}
-      onChange={(value) => navigate(value)}
+      onChange={(value) => navigate(value ?? "/")}
     >
       <Tabs.List grow>{items}</Tabs.List>
     </Tabs>

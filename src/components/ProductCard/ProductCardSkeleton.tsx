@@ -14,7 +14,7 @@ const ProductCardSkeleton = () => {
         <Skeleton circle={false} className={style.productImage} />
         <Skeleton height={20} mt={5} width={40} />
         <Skeleton height={8} mt={5} width="80%" />
-        <Group position="apart" mt={5}>
+        <Group mt={5}>
           <Skeleton height={20} width={40} />
           <Skeleton height={20} width={60} />
         </Group>

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Product } from "types";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
@@ -22,7 +23,9 @@ const Shop = () => {
   });
 
   useEffect(() => {
-    updateProducts(allProducts);
+    if (allProducts) {
+      updateProducts(allProducts);
+    }
   }, [allProducts]);
 
   if (isLoading) {
@@ -40,7 +43,7 @@ const Shop = () => {
   if (error) {
     return <div className="error">Error: error fetching</div>;
   }
-  let productsToShow = [];
+  let productsToShow: Product[] | [] = [];
   if (categoryName && categoryName !== "all") {
     productsToShow = getProductsByCategoryName(categoryName);
   } else {
@@ -54,13 +57,7 @@ const Shop = () => {
   }
   if (productsToShow.length === 0) {
     return (
-      <Flex
-        sx={{
-          height: "100vh",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
+      <Flex align="center" justify="center" h="100vh">
         <Container>
           <Title order={2}>No products found with current filters</Title>
         </Container>

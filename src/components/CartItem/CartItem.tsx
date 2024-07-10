@@ -12,10 +12,11 @@ import {
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { CartProduct } from "@customTypes/index";
 import { useCartStore } from "../../stores/cartStore";
 import classes from "./CartItem.module.css";
 
-const CartItem = ({ product }) => {
+const CartItem = ({ product }: { product: CartProduct }) => {
   //
   const {
     removeFromCart,
@@ -43,7 +44,7 @@ const CartItem = ({ product }) => {
   return (
     <Paper shadow="sm" radius="md" p="md">
       <Flex direction={{ base: "column", xs: "row" }} gap={10}>
-        <Group flex={1} wrap="no-wrap">
+        <Group flex={1} wrap="nowrap">
           <Link to={`/product/${product.id}`}>
             <Image src={product.image} className={classes.productImage} />
           </Link>

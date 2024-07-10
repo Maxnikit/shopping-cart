@@ -1,15 +1,15 @@
-import { Autocomplete } from "@mantine/core";
 import { useState } from "react";
-import { useProductStore } from "../../stores/productStore";
-import AutocompleteExtended from "../AutocompleteExtended/AutocompleteExtended";
 import { useNavigate, useParams } from "react-router-dom";
 import { IconSearch } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
+import { useProductStore } from "@stores/productStore";
+import AutocompleteExtended from "@components/AutocompleteExtended/AutocompleteExtended";
+import { SearchQuery } from "types";
 
 export function SearchBar() {
   const navigate = useNavigate();
   const [value, setValue] = useState("");
-  const [dropdownOpened, { toggle, close, open }] = useDisclosure();
+  const [dropdownOpened, { close, open }] = useDisclosure();
   const { getArrayOfProductNames, getProductByName } = useProductStore();
   const productNames = getArrayOfProductNames();
   let { categoryName } = useParams();
@@ -17,12 +17,15 @@ export function SearchBar() {
   if (categoryName === undefined) {
     categoryName = "all";
   }
-  function onOptionSelect(query) {
+  function onOptionSelect(query: SearchQuery) {
     const product = getProductByName(query);
+    if (!product) {
+      return;
+    }
     navigate(`/product/${product.id}`);
   }
 
-  function onOptionSubmit(query) {
+  function onOptionSubmit(query: SearchQuery) {
     if (!query) {
       return;
     }

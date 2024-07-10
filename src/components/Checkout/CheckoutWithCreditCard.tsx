@@ -16,7 +16,7 @@ const Checkout = () => {
   const { getTotalItemPrice } = useCartStore();
 
   return (
-    <Card withBorder maw={500} m="auto" align="center">
+    <Card withBorder maw={500} m="auto">
       <Title>Checkout</Title>
       <Text>Total: ${getTotalItemPrice().toFixed(2)} </Text>
       {/* TODO some phone number, email, adress, credit card? */}
@@ -31,8 +31,8 @@ const Checkout = () => {
           <TextInput placeholder="Name on card" />
           <NumberInput type="tel" hideControls placeholder="Card number" />
           <Group>
-            <NumberInput w="40%" placeholder="mm/yy" type="tel" maxlength="7" />
-            <NumberInput w="20%" placeholder="CVV" type="tel" maxlength="4" />
+            <NumberInput w="40%" placeholder="mm/yy" type="tel" />
+            <NumberInput w="20%" placeholder="CVV" type="tel" />
           </Group>
         </Stack>
       </Fieldset>

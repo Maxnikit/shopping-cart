@@ -1,6 +1,12 @@
 import { Radio, Text } from "@mantine/core";
 
-export function FilterCategory({ categoryName, productCount }) {
+export function FilterCategory({
+  categoryName,
+  productCount,
+}: {
+  categoryName: string;
+  productCount: number;
+}) {
   const labelText = `${
     categoryName.charAt(0).toUpperCase() + categoryName.slice(1)
   }`;
