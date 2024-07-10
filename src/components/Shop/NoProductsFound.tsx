@@ -1,12 +1,4 @@
-import {
-  Flex,
-  Title,
-  Container,
-  Button,
-  Text,
-  Card,
-  Stack,
-} from "@mantine/core";
+import { Title, Button, Text, Card, Stack } from "@mantine/core";
 import { IconMoodSad } from "@tabler/icons-react";
 import { Link } from "react-router-dom";
 

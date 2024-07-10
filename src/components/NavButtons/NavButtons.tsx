@@ -1,12 +1,12 @@
 import { Button } from "@mantine/core";
 import { Link } from "react-router-dom";
 
-import { IconHome2 } from "@tabler/icons-react";
+import { IconShoppingBag } from "@tabler/icons-react";
 
 import { CartIcon } from "../CartIcon/CartIcon";
 
 const links = [
-  { link: "/shop", label: "Shop", icon: <IconHome2 /> },
+  { link: "/shop", label: "Shop", icon: <IconShoppingBag /> },
   { link: "/cart", label: "Cart", icon: <CartIcon /> },
 ];
 

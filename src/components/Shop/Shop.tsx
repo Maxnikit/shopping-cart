@@ -1,14 +1,14 @@
-import { Container, Flex, Group, Title } from "@mantine/core";
+import { Group } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Product } from "types";
+import { NoProductsFound } from "@components/Shop/NoProductsFound";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
 import { useProductStore } from "../../stores/productStore";
-import { NoProductsFound } from "@components/Shop/NoProductsFound";
 
 const Shop = () => {
   const { categoryName, query } = useParams();

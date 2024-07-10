@@ -1,10 +1,10 @@
-import { Tabs } from "@mantine/core";
+import { Stack, Tabs, Text } from "@mantine/core";
 import { useNavigate, useLocation } from "react-router-dom";
-import { IconHome2 } from "@tabler/icons-react";
+import { IconShoppingBag } from "@tabler/icons-react";
 import { CartIcon } from "../CartIcon/CartIcon";
 
 const links = [
-  { link: "/shop", label: "Shop", icon: <IconHome2 /> },
+  { link: "/shop", label: "Shop", icon: <IconShoppingBag /> },
   {
     link: "/cart",
     label: "Cart",
@@ -16,14 +16,11 @@ export function BottomNavigation() {
   const location = useLocation();
 
   const items = links.map((link) => (
-    <Tabs.Tab
-      size="lg"
-      key={link.label}
-      value={link.link}
-      leftSection={link.icon}
-      // p={0}
-    >
-      {link.label}
+    <Tabs.Tab key={link.label} value={link.link} pt={11}>
+      <Stack gap={0} align="center">
+        {link.icon}
+        <Text size="xs">{link.label}</Text>
+      </Stack>
     </Tabs.Tab>
   ));
 
