@@ -1,10 +1,10 @@
 import { Button, Group, Paper, Stack, Text, Title } from "@mantine/core";
 
 import { useNavigate } from "react-router-dom";
+import style from "@components/Cart/Cart.module.css";
 import { useCartStore } from "../../stores/cartStore";
 import CartItem from "../CartItem/CartItem";
 import EmptyCart from "./EmptyCart";
-import style from "./Cart.module.css";
 
 const Cart = () => {
   const navigate = useNavigate();
