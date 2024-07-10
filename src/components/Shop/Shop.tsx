@@ -8,6 +8,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
 import { useProductStore } from "../../stores/productStore";
+import { NoProductsFound } from "@components/Shop/NoProductsFound";
 
 const Shop = () => {
   const { categoryName, query } = useParams();
@@ -56,13 +57,7 @@ const Shop = () => {
     );
   }
   if (productsToShow.length === 0) {
-    return (
-      <Flex align="center" justify="center" h="100vh">
-        <Container>
-          <Title order={2}>No products found with current filters</Title>
-        </Container>
-      </Flex>
-    );
+    return <NoProductsFound />;
   }
 
   return (
