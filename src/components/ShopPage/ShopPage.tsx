@@ -10,16 +10,13 @@ export function ShopPage() {
 
   return (
     <Flex align="start" justify="start" gap="lg">
-      {!isMobile() ? (
-        <FilterMenu sticky />
-      ) : (
-        <Drawer
-          opened={opened}
-          onClose={close}
-          title={<Title order={3}>Filters</Title>}
-        >
+      {isMobile() ? (
+        // TODO MAKE TITLE BIGGER
+        <Drawer opened={opened} onClose={close} title="Filters">
           <FilterMenu sticky={false} />
         </Drawer>
+      ) : (
+        <FilterMenu sticky />
       )}
       <Stack w="100%">
         {isMobile() ? <MobileFilterBar openDrawer={open} /> : undefined}

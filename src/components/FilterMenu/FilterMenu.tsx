@@ -1,6 +1,6 @@
 import { Stack, Radio, Paper, Chip } from "@mantine/core";
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { IconX } from "@tabler/icons-react";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
 import { useProductStore } from "../../stores/productStore";
@@ -9,24 +9,22 @@ import { SearchBar } from "../SearchBar/SearchBar";
 export function FilterMenu({ sticky }: { sticky: boolean }) {
   const { getAllCategories } = useProductStore();
   const categories = getAllCategories();
-  const { categoryName, query } = useParams();
-
+  const searchParams = useSearchParams()[0];
   const navigate = useNavigate();
-  const [value, setValue] = useState(categoryName);
+  const [value, setValue] = useState(searchParams.get("category"));
   if (value === undefined) {
     setValue("all");
   }
+
   function changeCategory(category: string) {
-    let url = "";
     if (category) {
-      url = `/shop/category/${category}`;
+      searchParams.set("category", category);
       setValue(category);
     }
-    if (query) {
-      url += `/search/${query}`;
-    }
-    navigate(url);
+
+    navigate({ pathname: "/shop", search: searchParams.toString() });
   }
+  const query = searchParams.get("search");
   return (
     <Paper miw={300} pos={sticky ? "sticky" : "static"} top={sticky ? 80 : 0}>
       <Stack>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { IconSearch } from "@tabler/icons-react";
 import { useDisclosure } from "@mantine/hooks";
 import { useProductStore } from "@stores/productStore";
@@ -13,7 +13,7 @@ export function SearchBar() {
   const { getArrayOfProductNames, getProductByName } = useProductStore();
   const productNames = getArrayOfProductNames();
   let { categoryName } = useParams();
-
+  let [searchParams, setSearchParams] = useSearchParams();
   if (categoryName === undefined) {
     categoryName = "all";
   }
@@ -22,6 +22,7 @@ export function SearchBar() {
     if (!product) {
       return;
     }
+
     navigate(`/product/${product.id}`);
   }
 
@@ -29,7 +30,9 @@ export function SearchBar() {
     if (!query) {
       return;
     }
-    navigate(`/shop/category/${categoryName}/search/${query}`);
+
+    searchParams.set("search", query);
+    navigate({ pathname: "/shop", search: searchParams.toString() });
     close();
     setValue("");
   }

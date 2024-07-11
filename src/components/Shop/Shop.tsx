@@ -1,7 +1,7 @@
 import { Group } from "@mantine/core";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Product } from "types";
 import { NoProductsFound } from "@components/Shop/NoProductsFound";
@@ -11,7 +11,11 @@ import { fetchAllProducts } from "../../api/getProducts";
 import { useProductStore } from "../../stores/productStore";
 
 const Shop = () => {
-  const { categoryName, query } = useParams();
+  const searchParams = useSearchParams()[0];
+  const categoryName = searchParams.get("category");
+  const query = searchParams.get("search");
+  const order = searchParams.get("order");
+
   const { updateProducts, getAllProducts, getProductsByCategoryName } =
     useProductStore();
   const {
