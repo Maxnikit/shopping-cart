@@ -1,5 +1,5 @@
 import { Stack, Radio, Paper, Chip } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { IconX } from "@tabler/icons-react";
 import { isMobile } from "@utils/isMobile";
@@ -15,9 +15,11 @@ export function FilterMenu({ sticky }: { sticky: boolean }) {
   const navigate = useNavigate();
   const [value, setValue] = useState(searchParams.get("category"));
 
-  if (value === null) {
-    setValue("all");
-  }
+  useEffect(() => {
+    if (searchParams.get("category") === null) {
+      setValue("all");
+    }
+  }, [searchParams]);
 
   function changeCategory(category: string) {
     if (category) {

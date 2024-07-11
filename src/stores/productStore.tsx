@@ -33,7 +33,6 @@ export const useProductStore = create<ProductState>()((set, get) => ({
   },
   getAllProducts: () => {
     const { products } = get();
-    console.log(products);
     return products;
   },
   // getAllProducts: (): Product[] => {
