@@ -10,15 +10,19 @@ import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
 import { useProductStore } from "../../stores/productStore";
-
+// TODO changing sorting also changes products order in store. Find out why and how. Fix it. Products should not change their order in store
 const Shop = () => {
   const searchParams = useSearchParams()[0];
   const categoryName = searchParams.get("category");
   const query = searchParams.get("search");
   const order = searchParams.get("order");
 
-  const { updateProducts, getAllProducts, getProductsByCategoryName } =
-    useProductStore();
+  const {
+    updateProducts,
+    getAllProducts,
+    getProductsByCategoryName,
+    removeAllProducts,
+  } = useProductStore();
   const {
     data: allProducts,
     isLoading,
@@ -30,6 +34,7 @@ const Shop = () => {
 
   useEffect(() => {
     if (allProducts) {
+      console.log("products changed", allProducts);
       updateProducts(allProducts);
     }
   }, [allProducts]);
@@ -55,13 +60,13 @@ const Shop = () => {
   } else {
     productsToShow = getAllProducts();
   }
-
+  // console.log(1, getAllProducts());
   if (query) {
     productsToShow = productsToShow.filter((product) =>
       product.title.toLowerCase().includes(query.toLowerCase())
     );
   }
-
+  // console.log(2, getAllProducts());
   if (order) {
     switch (order) {
       // First cheapest
@@ -86,10 +91,10 @@ const Shop = () => {
         break;
     }
   }
+  // console.log(3, getAllProducts());
   if (productsToShow.length === 0) {
     return <NoProductsFound />;
   }
-
   return (
     <motion.div
       key={categoryName}

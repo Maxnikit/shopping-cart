@@ -1,9 +1,9 @@
 import { Drawer, Flex, Stack, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { isMobile } from "@utils/isMobile";
 import { FilterMenu } from "../FilterMenu/FilterMenu";
 import Shop from "../Shop/Shop";
 import { MobileFilterBar } from "../MobileFilterBar/MobileFilterBar";
-import { isMobile } from "../../utils/isMobile";
 
 export function ShopPage() {
   const [opened, { open, close }] = useDisclosure(false);

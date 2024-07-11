@@ -33,6 +33,7 @@ export const useProductStore = create<ProductState>()((set, get) => ({
   },
   getAllProducts: () => {
     const { products } = get();
+    console.log(products);
     return products;
   },
   // getAllProducts: (): Product[] => {
@@ -56,7 +57,7 @@ export const useProductStore = create<ProductState>()((set, get) => ({
   getAllCategories: () => {
     const { products } = get();
     if (!products) return [{ categoryName: "all", productCount: 0 }];
-
+    // console.log(products);
     // Initialize an object to count products per category
     const categoryCounts = products.reduce(
       (acc: { [key: string]: number }, product: Product) => {
@@ -79,6 +80,10 @@ export const useProductStore = create<ProductState>()((set, get) => ({
     );
 
     // Include the "all" category with the total product count
+    // console.log(
+    //   "end",
+    //   categoriesWithCounts.map((c) => c.categoryName)
+    // );
     return [
       { categoryName: "all", productCount: totalProducts },
       ...categoriesWithCounts,

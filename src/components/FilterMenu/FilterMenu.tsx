@@ -2,9 +2,11 @@ import { Stack, Radio, Paper, Chip } from "@mantine/core";
 import { useState } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { IconX } from "@tabler/icons-react";
+import { isMobile } from "@utils/isMobile";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
 import { useProductStore } from "../../stores/productStore";
 import { SearchBar } from "../SearchBar/SearchBar";
+import { OrderSelect } from "@components/OrderSelect/OrderSelect";
 
 export function FilterMenu({ sticky }: { sticky: boolean }) {
   const { getAllCategories } = useProductStore();
@@ -26,6 +28,7 @@ export function FilterMenu({ sticky }: { sticky: boolean }) {
     navigate({ pathname: "/shop", search: searchParams.toString() });
   }
   const query = searchParams.get("search");
+
   return (
     <Paper miw={300} pos={sticky ? "sticky" : "static"} top={sticky ? 80 : 0}>
       <Stack>
@@ -57,6 +60,7 @@ export function FilterMenu({ sticky }: { sticky: boolean }) {
             {query}
           </Chip>
         ) : null}
+        {!isMobile() ? <OrderSelect /> : null}
       </Stack>
     </Paper>
   );

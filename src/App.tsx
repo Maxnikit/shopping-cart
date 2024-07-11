@@ -1,7 +1,7 @@
 import "@mantine/core/styles.css";
-import { Group, AppShell, em } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
+import { Group, AppShell } from "@mantine/core";
 import { Outlet } from "react-router-dom";
+import { isMobile } from "@utils/isMobile";
 import HeaderTitle from "./components/HeaderTitle/HeaderTitle";
 import NavButtons from "./components/NavButtons/NavButtons";
 // import Footer from "./components/Footer/Footer";
@@ -10,8 +10,6 @@ import ScrollToTop from "./utils/scrollToTop";
 import { BottomNavigation } from "./components/BottomNavigation/BottomNavigation";
 
 function App() {
-  const isMobile = useMediaQuery(`(max-width: ${em(768)})`);
-
   // TODO Improve error messages
   // TODO add filters by price and rating
   // TODO add credit card info for checkout and adress
@@ -21,7 +19,7 @@ function App() {
       header={{ height: 60 }}
       footer={{
         height: 65,
-        collapsed: !isMobile,
+        collapsed: !isMobile(),
       }}
       padding="md"
     >
