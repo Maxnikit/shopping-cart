@@ -15,6 +15,7 @@ export default defineConfig({
       { find: "@components", replacement: "/src/components" },
       { find: "@stores", replacement: "/src/stores" },
       { find: "@types", replacement: "/src/types" },
+      { find: "@utils", replacement: "/src/utils" },
     ],
     extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".module.css"],
   },

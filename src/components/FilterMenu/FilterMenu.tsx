@@ -12,7 +12,8 @@ export function FilterMenu({ sticky }: { sticky: boolean }) {
   const searchParams = useSearchParams()[0];
   const navigate = useNavigate();
   const [value, setValue] = useState(searchParams.get("category"));
-  if (value === undefined) {
+
+  if (value === null) {
     setValue("all");
   }
 

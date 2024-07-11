@@ -5,6 +5,7 @@ import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Product } from "types";
 import { NoProductsFound } from "@components/Shop/NoProductsFound";
+import { sortOptions } from "@utils/constants";
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
@@ -59,6 +60,31 @@ const Shop = () => {
     productsToShow = productsToShow.filter((product) =>
       product.title.toLowerCase().includes(query.toLowerCase())
     );
+  }
+
+  if (order) {
+    switch (order) {
+      // First cheapest
+      case sortOptions[0]:
+        productsToShow = productsToShow.sort((a, b) => a.price - b.price);
+        break;
+      // First expensive
+      case sortOptions[1]:
+        productsToShow = productsToShow.sort((a, b) => b.price - a.price);
+        break;
+      // By rating
+      case sortOptions[2]:
+        productsToShow = productsToShow.sort(
+          (a, b) => b.rating.rate - a.rating.rate
+        );
+        break;
+      // By the number of reviews
+      case sortOptions[3]:
+        productsToShow = productsToShow.sort(
+          (a, b) => b.rating.count - a.rating.count
+        );
+        break;
+    }
   }
   if (productsToShow.length === 0) {
     return <NoProductsFound />;
