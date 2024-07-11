@@ -55,10 +55,12 @@ const Shop = () => {
     return <div className="error">Error: error fetching</div>;
   }
   let productsToShow: Product[] | [] = [];
+  // Spread [...originalArray] was used here because without it after sorting it changed the original
+  // products array in my store
   if (categoryName && categoryName !== "all") {
-    productsToShow = getProductsByCategoryName(categoryName);
+    productsToShow = [...getProductsByCategoryName(categoryName)];
   } else {
-    productsToShow = getAllProducts();
+    productsToShow = [...getAllProducts()];
   }
   // console.log(1, getAllProducts());
   if (query) {
