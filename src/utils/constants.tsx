@@ -1,6 +1,6 @@
 export const sortOptions: [string, ...string[]] = [
+  "By the number of reviews",
+  "By rating",
   "First cheapest",
   "First expensive",
-  "By rating",
-  "By the number of reviews",
 ];

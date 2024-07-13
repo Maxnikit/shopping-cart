@@ -10,6 +10,12 @@ import ProductCard from "../ProductCard/ProductCard";
 import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 import { fetchAllProducts } from "../../api/getProducts";
 import { useProductStore } from "../../stores/productStore";
+import {
+  sortByCheapest,
+  sortByMostExpensive,
+  sortByRating,
+  sortByReviewsCount,
+} from "@utils/sortingMethods";
 // TODO changing sorting also changes products order in store. Find out why and how. Fix it. Products should not change their order in store
 const Shop = () => {
   const searchParams = useSearchParams()[0];
@@ -72,26 +78,26 @@ const Shop = () => {
   if (order) {
     switch (order) {
       // First cheapest
-      case sortOptions[0]:
-        productsToShow = productsToShow.sort((a, b) => a.price - b.price);
+      case sortOptions[2]:
+        productsToShow = sortByCheapest(productsToShow);
         break;
       // First expensive
-      case sortOptions[1]:
-        productsToShow = productsToShow.sort((a, b) => b.price - a.price);
+      case sortOptions[3]:
+        productsToShow = sortByMostExpensive(productsToShow);
         break;
       // By rating
-      case sortOptions[2]:
-        productsToShow = productsToShow.sort(
-          (a, b) => b.rating.rate - a.rating.rate
-        );
+      case sortOptions[1]:
+        productsToShow = sortByRating(productsToShow);
         break;
       // By the number of reviews
-      case sortOptions[3]:
-        productsToShow = productsToShow.sort(
-          (a, b) => b.rating.count - a.rating.count
-        );
+      case sortOptions[0]:
+        productsToShow = sortByReviewsCount(productsToShow);
         break;
     }
+  }
+
+  if (!order) {
+    productsToShow = sortByReviewsCount(productsToShow);
   }
   // console.log(3, getAllProducts());
   if (productsToShow.length === 0) {
