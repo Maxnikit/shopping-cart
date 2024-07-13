@@ -15,6 +15,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { CartProduct } from "@customTypes/index";
 import { useCartStore } from "../../stores/cartStore";
 import classes from "./CartItem.module.css";
+import { CategoryBadge } from "@components/CategoryBadge/CategoryBadge";
 
 const CartItem = ({ product }: { product: CartProduct }) => {
   //
@@ -56,13 +57,7 @@ const CartItem = ({ product }: { product: CartProduct }) => {
             >
               {product.title}
             </Text>
-            <Badge
-              style={{ cursor: "pointer" }}
-              component={Link}
-              to={`/shop/category/${product.category}`}
-            >
-              {product.category}
-            </Badge>
+            <CategoryBadge category={product.category} />
           </Stack>
         </Group>
 

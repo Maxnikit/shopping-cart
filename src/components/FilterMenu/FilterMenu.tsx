@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import { IconX } from "@tabler/icons-react";
 import { isMobile } from "@utils/isMobile";
+import { OrderSelect } from "@components/OrderSelect/OrderSelect";
 import { FilterCategory } from "../FilterCategory/FilterCategory";
 import { useProductStore } from "../../stores/productStore";
 import { SearchBar } from "../SearchBar/SearchBar";
-import { OrderSelect } from "@components/OrderSelect/OrderSelect";
 
 export function FilterMenu({ sticky }: { sticky: boolean }) {
   const { getAllCategories } = useProductStore();

@@ -6,6 +6,7 @@ import ProductPageSkeleton from "./ProductPageSkeleton";
 import { useCartStore } from "../../stores/cartStore";
 import { getProductById } from "../../api/getProducts";
 import { ProductRating } from "../ProductRating/ProductRating";
+import { CategoryBadge } from "@components/CategoryBadge/CategoryBadge";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -94,13 +95,7 @@ const ProductPageComponent = ({ product }: { product: Product }) => {
 
       <Stack w={500}>
         <Title order={2}>{title}</Title>
-        <Badge
-          style={{ cursor: "pointer" }}
-          component={Link}
-          to={`/shop/category/${category}`}
-        >
-          {category}
-        </Badge>
+        <CategoryBadge category={category} />
         <ProductRating rating={rating} />
         <Text>{description}</Text>
         <Group align="center">
